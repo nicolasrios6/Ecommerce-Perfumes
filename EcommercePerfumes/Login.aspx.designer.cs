@@ -11,52 +11,43 @@ namespace EcommercePerfumes
 {
 
 
-	public partial class SiteMaster
+	public partial class Login
 	{
 
 		/// <summary>
-		/// Control liLogin.
+		/// Control txtEmail.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlGenericControl liLogin;
+		protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
 		/// <summary>
-		/// Control liRegistro.
+		/// Control txtContrasenia.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlGenericControl liRegistro;
+		protected global::System.Web.UI.WebControls.TextBox txtContrasenia;
 
 		/// <summary>
-		/// Control liLogout.
+		/// Control btnLogin.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlGenericControl liLogout;
+		protected global::System.Web.UI.WebControls.Button btnLogin;
 
 		/// <summary>
-		/// Control btnLogout.
+		/// Control lblMensaje.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton btnLogout;
-
-		/// <summary>
-		/// Control MainContent.
-		/// </summary>
-		/// <remarks>
-		/// Campo generado automáticamente.
-		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+		protected global::System.Web.UI.WebControls.Label lblMensaje;
 	}
 }
