@@ -3,4 +3,5 @@
     <h2>Panel de admin.</h2>
     <a href="Productos.aspx" class="btn btn-primary">Gestionar Productos</a>
     <a href="Marcas.aspx" class="btn btn-primary">Gestionar Marcas</a>
+    <a href="Usuarios.aspx" class="btn btn-primary">Gestionar Usuarios</a>
 </asp:Content>
