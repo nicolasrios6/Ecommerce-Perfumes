@@ -36,6 +36,18 @@ namespace EcommercePerfumes.Negocio
 			}
 		}
 
+		public List<Producto> ObtenerActivos()
+		{
+			ProductoDatos datos = new ProductoDatos();
+			try
+			{
+				return datos.ObtenerActivos();
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error al obtener los productos activos.", ex);
+			}
+		}
 		public void Agregar(Producto producto)
 		{
 			ProductoDatos datos = new ProductoDatos();

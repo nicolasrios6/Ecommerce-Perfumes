@@ -41,7 +41,7 @@ namespace EcommercePerfumes.Admin
 					txtImagenUrl.Text = producto.ImagenUrl;
 					imgProducto.ImageUrl = producto.ImagenUrl;
 
-					ddlMarca.SelectedValue = producto.Marca.Nombre;
+					ddlMarca.SelectedValue = producto.MarcaId.ToString();
 
 				}
 			}

@@ -65,9 +65,19 @@ namespace EcommercePerfumes.Admin
 				else
 				{
 					marcaNegocio.Agregar(marca.Nombre);
+					string returnUrl = Request.QueryString["returnUrl"];
+
+					if (!string.IsNullOrEmpty(returnUrl))
+					{
+						Response.Redirect(returnUrl, false);
+					}
+					else
+					{
+						Response.Redirect("Marcas.aspx", false);
+					}
 				}
 
-				Response.Redirect("Marcas.aspx", false);
+				//Response.Redirect("Marcas.aspx", false);
 			}
 			catch (Exception ex)
 			{
