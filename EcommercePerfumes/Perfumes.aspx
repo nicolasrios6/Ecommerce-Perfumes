@@ -8,8 +8,34 @@
             <div class="col-3">
                 <div class="sticky-top" style="top: 80px">
                     <h5>Filtros</h5>
+
+                    <!-- Marca -->
+                    <h6 class="mt-3">Marca</h6>
+                    <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged"></asp:DropDownList>
+
+                    <!-- Género -->
+                    <h6 class="mt-3">Género</h6>
+                    <asp:RadioButtonList ID="rblGenero" runat="server" CssClass="list-group" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged">
+                        <asp:ListItem Text="Todos" Value="" Selected="True" />
+                        <asp:ListItem Text="Hombre" Value="Hombre"></asp:ListItem>
+                        <asp:ListItem Text="Mujer" Value="Mujer"></asp:ListItem>
+                        <asp:ListItem Text="Unisex" Value="Unisex"></asp:ListItem>
+                    </asp:RadioButtonList>
+
+                    <!-- Rango de precios -->
+                    <h6 class="mt-3">Precio</h6>
+                    <asp:RadioButtonList ID="rblPrecio" runat="server" CssClass="list-group" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged">
+                        <asp:ListItem Text="Todos" Value="" Selected="True"></asp:ListItem>
+                        <asp:ListItem Text="Menos de $10.000" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="$10.000 - $20.000" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Más de $20.000" Value="3"></asp:ListItem>
+                    </asp:RadioButtonList>
+
+                    <asp:Button ID="btnLimpiarFiltros" Text="Limpiar filtros" runat="server"
+                        CssClass="btn btn-warning mt-3 " OnClick="btnLimpiarFiltros_Click"    
+                    />
                 </div>
-                
+
             </div>
 
             <div class="col-9">

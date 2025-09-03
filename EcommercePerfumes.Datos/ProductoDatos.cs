@@ -147,6 +147,53 @@ namespace EcommercePerfumes.Datos
 			}
 		}
 
+		public List<Producto> ObtenerPorMarca(int marcaId)
+		{
+			AccesoDatos datos = new AccesoDatos();
+			List<Producto> lista = new List<Producto>();
+
+			try
+			{
+				datos.setProcedimiento("Productos_ObtenerPorMarca");
+				datos.setParametro("@MarcaId", marcaId);
+				datos.ejecutarLectura();
+
+				while(datos.Lector.Read())
+				{
+					Producto producto = new Producto
+					{
+						Id = (int)datos.Lector["Id"],
+						Nombre = datos.Lector["Nombre"].ToString(),
+						Descripcion = datos.Lector["Descripcion"].ToString(),
+						Precio = (decimal)datos.Lector["Precio"],
+						Stock = (int)datos.Lector["Stock"],
+						ImagenUrl = datos.Lector["ImagenUrl"].ToString(),
+						Genero = datos.Lector["Genero"].ToString(),
+						Concentracion = datos.Lector["Concentracion"].ToString(),
+						Mililitros = (int)datos.Lector["Mililitros"],
+						Notas = datos.Lector["Notas"].ToString(),
+						Activo = (bool)datos.Lector["Activo"],
+						Marca = new Marca
+						{
+							Id = (int)datos.Lector["MarcaId"],
+							Nombre = datos.Lector["MarcaNombre"].ToString(),
+							Activo = (bool)datos.Lector["MarcaActivo"]
+						}
+					};
+
+					lista.Add(producto);
+				}
+				return lista;
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error al obtener los productos por marca.", ex);
+			} finally
+			{
+				datos.cerrarConexion();
+			}
+		}
+
 		public void Agregar(Producto producto)
 		{
 			AccesoDatos datos = new AccesoDatos();

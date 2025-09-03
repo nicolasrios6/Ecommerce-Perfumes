@@ -22,7 +22,6 @@ namespace EcommercePerfumes.Negocio
 				throw new Exception("Error al obtener los productos.", ex);
 			}
 		}
-
 		public Producto ObtenerPorId(int id)
 		{
 			ProductoDatos datos = new ProductoDatos();
@@ -35,7 +34,6 @@ namespace EcommercePerfumes.Negocio
 				throw new Exception("Error al obtener el producto por id.", ex);
 			}
 		}
-
 		public List<Producto> ObtenerActivos()
 		{
 			ProductoDatos datos = new ProductoDatos();
@@ -46,6 +44,18 @@ namespace EcommercePerfumes.Negocio
 			catch (Exception ex)
 			{
 				throw new Exception("Error al obtener los productos activos.", ex);
+			}
+		}
+		public List<Producto> ObtenerPorMarca(int marcaId)
+		{
+			ProductoDatos datos = new ProductoDatos();
+			try
+			{
+				return datos.ObtenerPorMarca(marcaId);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error al obtener los productos por marca.", ex);
 			}
 		}
 		public void Agregar(Producto producto)
@@ -60,7 +70,6 @@ namespace EcommercePerfumes.Negocio
 				throw new Exception("Error al agregar el producto.", ex);
 			}
 		}
-
 		public void Modificar(Producto producto)
 		{
 			ProductoDatos datos = new ProductoDatos();
