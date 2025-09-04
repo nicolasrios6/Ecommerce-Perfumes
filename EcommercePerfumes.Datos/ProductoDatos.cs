@@ -81,6 +81,7 @@ namespace EcommercePerfumes.Datos
 						Mililitros = (int)datos.Lector["Mililitros"],
 						Notas = datos.Lector["Notas"].ToString(),
 						Activo = (bool)datos.Lector["Activo"],
+						MarcaNombre = datos.Lector["MarcaNombre"].ToString(),
 
 						Marca = new Marca
 						{

@@ -21,5 +21,6 @@ namespace EcommercePerfumes.Entidades
 		public int Mililitros { get; set; }
 		public string Notas { get; set; }
 		public bool Activo { get; set; }
+		public string MarcaNombre { get; set; }
 	}
 }

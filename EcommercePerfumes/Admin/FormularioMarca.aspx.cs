@@ -61,9 +61,12 @@ namespace EcommercePerfumes.Admin
 					marca.Id = (int)Session["MarcaId"];
 					marcaNegocio.Modificar(marca);
 					Session.Remove("MarcaId");
+
+					Response.Redirect("Marcas.aspx", false);
 				}
 				else
 				{
+
 					marcaNegocio.Agregar(marca.Nombre);
 					string returnUrl = Request.QueryString["returnUrl"];
 
@@ -76,8 +79,6 @@ namespace EcommercePerfumes.Admin
 						Response.Redirect("Marcas.aspx", false);
 					}
 				}
-
-				//Response.Redirect("Marcas.aspx", false);
 			}
 			catch (Exception ex)
 			{

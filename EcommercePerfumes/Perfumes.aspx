@@ -26,9 +26,9 @@
                     <h6 class="mt-3">Precio</h6>
                     <asp:RadioButtonList ID="rblPrecio" runat="server" CssClass="list-group" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged">
                         <asp:ListItem Text="Todos" Value="" Selected="True"></asp:ListItem>
-                        <asp:ListItem Text="Menos de $10.000" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="$10.000 - $20.000" Value="2"></asp:ListItem>
-                        <asp:ListItem Text="Más de $20.000" Value="3"></asp:ListItem>
+                        <asp:ListItem Text="Menos de $60.000" Value="1"></asp:ListItem>
+                        <asp:ListItem Text="$60.000 - $100.000" Value="2"></asp:ListItem>
+                        <asp:ListItem Text="Más de $100.000" Value="3"></asp:ListItem>
                     </asp:RadioButtonList>
 
                     <asp:Button ID="btnLimpiarFiltros" Text="Limpiar filtros" runat="server"
@@ -51,7 +51,7 @@
                                         <p class="card-text">$<%#string.Format("{0:N0}", Eval("Precio")) %></p>
                                         <div class="d-flex justify-content-between">
                                             <a href="#" class="btn btn-sm btn-outline-primary">Agregar al carrito</a>
-                                            <a href="#" class="btn btn-sm btn-light">Ver detalle</a>
+                                            <a href="DetalleProducto.aspx?id=<%#Eval("Id") %>" class="btn btn-sm btn-light">Ver detalle</a>
                                         </div>
                                     </div>
                                 </div>
