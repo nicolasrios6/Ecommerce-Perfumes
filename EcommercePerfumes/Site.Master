@@ -39,28 +39,49 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-expand-md navbar-toggleable-sm navbar-dark bg-dark fixed-top">
             <div class="container">
+
+                <!-- Logo -->
                 <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="d-flex align-items-center">
+
+                    <!-- Botón hamburguesa -->
+                    <button type="button" class="navbar-toggler me-2" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <!-- Carrito (MOBILE: visible junto al logo, DESKTOP: oculto porque se muestra dentro del menú) -->
+                    <a class="nav-link text-white d-md-none me-2 position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" role="button" aria-controls="offcanvasCarrito">
+                        <i class="fas fa-shopping-cart"></i>
+                    </a>
+                </div>
+                <!-- Collapse con links -->
+                <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav mb-2 mb-md-0">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="Perfumes.aspx">Perfumes</a></li><%--desplegable--%>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="Perfumes.aspx">Perfumes</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
                         <li runat="server" id="liLogin" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Login">Login</a></li>
                         <li runat="server" id="liRegistro" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Registro">Registro</a></li>
                         <li id="liLogout" runat="server" class="nav-item" visible="false">
-                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link text-white" OnClick="btnLogout_Click" Text="Cerrar sesión"/>
+                            <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link text-white" OnClick="btnLogout_Click" Text="Cerrar sesión" />
                         </li>
+
+                        <!-- Carrito (DESKTOP: visible al final de los links, MOBILE: oculto porque se muestra arriba) -->
+                        <li class="nav-item position-relative d-none d-md-block">
+                            <a class="nav-link text-white" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" role="button" aria-controls="offcanvasCarrito">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
+                        </li>
+                        
                     </ul>
                 </div>
             </div>
         </nav>
+
         <div class="container body-content" style="margin-top: 80px">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
@@ -68,6 +89,51 @@
             <footer>
                 <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
             </footer>
+        </div>
+
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCarrito" aria-labelledby="offcanvasNavbarLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mi carrito</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <asp:UpdatePanel ID="UpdatePanel1" runat="server" UpdateMode="Conditional">
+                    <ContentTemplate>
+                        <asp:Repeater ID="repCarrito" runat="server" OnItemCommand="repCarrito_ItemCommand" OnItemDataBound="repCarrito_ItemDataBound">
+
+                            <ItemTemplate>
+                                <div class="row mb-3">
+                                    <div class="col-4">
+                                        <img class="w-100" src='<%#Eval("ImagenUrl") %>' runat="server" />
+                                    </div>
+                                    <div class="col-8">
+                                        <strong><%#Eval("Nombre") %></strong>
+                                        <p class="mb-0">
+                                            Cantidad: 
+                                            <asp:LinkButton ID="btnRestar" runat="server" CommandName="Restar" CommandArgument='<%#Eval("ProductoId") %>' CssClass="btn btn-sm btn-outline-secondary">-</asp:LinkButton>
+                                            <%# Eval("Cantidad") %>
+                                            <asp:LinkButton ID="btnSumar" runat="server" CommandName="Sumar" CommandArgument='<%#Eval("ProductoId") %>' CssClass="btn btn-sm btn-outline-secondary">+</asp:LinkButton>
+                                        </p>
+                                        <p>Precio: $<%#string.Format("{0:N0}", Eval("Precio")) %></p>
+                                        <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("ProductoId") %>' CssClass="btn btn-sm btn-danger mt-1">Eliminar</asp:LinkButton>
+                                    </div>
+                                </div>
+                            </ItemTemplate>
+                        </asp:Repeater>
+                        <asp:Panel ID="pnlCarritoVacio" runat="server" Visible="false">
+                            <div class="alert alert-info text-center">
+                                Tu carrito está vacío.
+                            </div>
+                        </asp:Panel>
+                        <asp:Panel ID="pnlResumenCarrito" runat="server" Visible="false">
+                            <strong>Total: $<asp:Label ID="lblTotal" runat="server"></asp:Label></strong>
+                            <asp:Button ID="btnFinalizarCompra" runat="server"
+                                Text="Finalizar Compra" CssClass="btn btn-primary w-100 mt-2"
+                                OnClientClick="return validarLogin();" UseSubmitBehavior="false" />
+                        </asp:Panel>
+                    </ContentTemplate>
+                </asp:UpdatePanel>
+            </div>
         </div>
     </form>
     <asp:PlaceHolder runat="server">

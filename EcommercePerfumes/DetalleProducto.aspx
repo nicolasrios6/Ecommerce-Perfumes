@@ -35,7 +35,7 @@
                     <asp:Label ID="lblStock" runat="server" />
                 </p>
 
-                <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" Enabled="true" />
+                <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" Enabled="true" OnClick="btnAgregarCarrito_Click" />
             </div>
         </div>
 
@@ -43,23 +43,29 @@
         <hr class="my-5" />
         <h3>Productos relacionados</h3>
 
-        <div class="d-flex flex-row overflow-auto gap-3 pb-3">
-            <asp:Repeater ID="repRelacionados" runat="server">
-                <ItemTemplate>
-                    <div class="card" style="min-width: 16rem;">
-                        <img src='<%#Eval("ImagenUrl") %>' class="card-img-top m-auto w-50" alt="...">
-                        <div class="card-body text-center d-flex flex-column">
-                            <h5 class="card-title"><%#Eval("Nombre") %></h5>
-                            <p class="card-text"><%#Eval("Marca.Nombre") %></p>
-                            <p class="card-text">$<%# string.Format("{0:N0}", Eval("Precio")) %></p>
-                            <div class="mt-auto d-flex justify-content-between">
-                                <a href="#" class="btn btn-sm btn-outline-primary">Agregar</a>
-                                <a href='DetalleProducto.aspx?id=<%#Eval("Id") %>' class="btn btn-sm btn-light">Ver detalle</a>
+        <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+            <ContentTemplate>
+
+                <div class="d-flex flex-row overflow-auto gap-3 pb-3">
+                    <asp:Repeater ID="repRelacionados" runat="server" OnItemCommand="repRelacionados_ItemCommand">
+                        <ItemTemplate>
+                            <div class="card" style="min-width: 16rem;">
+                                <img src='<%#Eval("ImagenUrl") %>' class="card-img-top m-auto w-50" alt="...">
+                                <div class="card-body text-center d-flex flex-column">
+                                    <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                                    <p class="card-text"><%#Eval("Marca.Nombre") %></p>
+                                    <p class="card-text">$<%# string.Format("{0:N0}", Eval("Precio")) %></p>
+                                    <div class="mt-auto d-flex justify-content-between">
+                                        <asp:Button ID="btnAgregarCarritoDestacado" Text="Agregar al carrito" runat="server" CommandName="Agregar"
+                                            CommandArgument='<%#Eval("Id") %>' CssClass="btn btn-sm btn-outline-primary" />
+                                        <a href='DetalleProducto.aspx?id=<%#Eval("Id") %>' class="btn btn-sm btn-light">Ver detalle</a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                </ItemTemplate>
-            </asp:Repeater>
-        </div>
+                        </ItemTemplate>
+                    </asp:Repeater>
+                </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
     </main>
 </asp:Content>

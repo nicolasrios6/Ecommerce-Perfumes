@@ -24,9 +24,7 @@ namespace EcommercePerfumes.Admin
 					int id = int.Parse(Request.QueryString["id"]);
 					Session["ProductoId"] = id;
 					CargarProducto(id);
-				}
-
-				if (Session["ProductoEnCarga"] != null)
+				} else if(Session["ProductoEnCarga"] != null)
 				{
 					Producto producto = (Producto)Session["ProductoEnCarga"];
 					txtNombre.Text = producto.Nombre;
@@ -42,7 +40,6 @@ namespace EcommercePerfumes.Admin
 					imgProducto.ImageUrl = producto.ImagenUrl;
 
 					ddlMarca.SelectedValue = producto.MarcaId.ToString();
-
 				}
 			}
 		}

@@ -27,6 +27,8 @@ namespace EcommercePerfumes
 					liRegistro.Visible = true;
 					liLogout.Visible = false;
 				}
+
+				CargarCarrito();
 			}
 		}
 
@@ -36,5 +38,92 @@ namespace EcommercePerfumes
 			Session.Abandon();
 			Response.Redirect("~/Login.aspx");
         }
-    }
+
+		public void CargarCarrito()
+		{
+			List<ItemCarrito> carrito = Session["Carrito"] as List<ItemCarrito>;
+
+			if (carrito != null && carrito.Count > 0)
+			{
+				int cantidadTotal = carrito.Sum(x => x.Cantidad);
+
+				repCarrito.DataSource = carrito;
+				repCarrito.DataBind();
+
+				pnlCarritoVacio.Visible = false;
+				pnlResumenCarrito.Visible = true;
+
+				lblTotal.Text = carrito.Sum(x => x.Precio * x.Cantidad).ToString("N0");
+			}
+			else
+			{
+
+				repCarrito.DataSource = null;
+				repCarrito.DataBind();
+
+				pnlCarritoVacio.Visible = true;
+				pnlResumenCarrito.Visible = false;
+			}
+		}
+
+		protected void repCarrito_ItemCommand(object source, RepeaterCommandEventArgs e)
+		{
+			List<ItemCarrito> carrito = Session["Carrito"] as List<ItemCarrito> ?? new List<ItemCarrito>();
+			int productoId = Convert.ToInt32(e.CommandArgument);
+
+			ItemCarrito item = carrito.FirstOrDefault(x => x.ProductoId == productoId);
+
+			if (item != null)
+			{
+				switch (e.CommandName)
+				{
+					case "Sumar":
+						if(item.Cantidad < item.StockDisponible)
+							item.Cantidad++;
+						break;
+
+					case "Restar":
+						if (item.Cantidad > 1)
+							item.Cantidad--;
+						else
+							carrito.Remove(item);
+						break;
+
+					case "Eliminar":
+						carrito.Remove(item);
+						break;
+				}
+			}
+
+			Session["Carrito"] = carrito;
+			CargarCarrito();
+			UpdatePanel1.Update(); // refresca el offcanvas sin recargar toda la página
+		}
+
+		public void ActualizarUpdatePanel()
+		{
+			UpdatePanel1.Update();
+		}
+
+		protected void repCarrito_ItemDataBound(object sender, RepeaterItemEventArgs e)
+		{
+			if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
+			{
+				var itemCarrito = (ItemCarrito)e.Item.DataItem;
+
+				// Buscar el botón sumar
+				LinkButton btnSumar = (LinkButton)e.Item.FindControl("btnSumar");
+
+				if (btnSumar != null)
+				{
+					// Si la cantidad en el carrito ya es igual al stock disponible -> deshabilitar
+					if (itemCarrito.Cantidad >= itemCarrito.StockDisponible)
+					{
+						btnSumar.Enabled = false;
+						btnSumar.CssClass = "btn btn-sm btn-outline-secondary disabled";
+					}
+				}
+			}
+		}
+	}
 }

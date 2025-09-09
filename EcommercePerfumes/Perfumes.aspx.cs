@@ -13,7 +13,8 @@ namespace EcommercePerfumes
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			if(!IsPostBack)
+			this.Page.MaintainScrollPositionOnPostBack = true;
+			if (!IsPostBack)
 			{
 				CargarMarcas();
 				CargarProductos();
@@ -50,7 +51,7 @@ namespace EcommercePerfumes
 			ProductoNegocio negocio = new ProductoNegocio();
 			List<Producto> lista = negocio.ObtenerActivos();
 
-			if(ddlMarcas.SelectedValue != "" && ddlMarcas.SelectedValue != "0")
+			if (ddlMarcas.SelectedValue != "" && ddlMarcas.SelectedValue != "0")
 			{
 				int idMarca = int.Parse(ddlMarcas.SelectedValue);
 				lista = lista.Where(p => p.Marca.Id == idMarca).ToList();
@@ -94,6 +95,45 @@ namespace EcommercePerfumes
 			rblPrecio.Items[0].Selected = true;
 
 			CargarProductos();
+		}
+
+		protected void repPerfumes_ItemCommand(object source, RepeaterCommandEventArgs e)
+		{
+			if (e.CommandName == "Agregar")
+			{
+				int productoId = Convert.ToInt32(e.CommandArgument);
+				ProductoNegocio negocio = new ProductoNegocio();
+				Producto producto = negocio.ObtenerPorId(productoId);
+
+				if (producto == null)
+				{
+					return;
+				}
+
+				List<ItemCarrito> carrito = Session["Carrito"] as List<ItemCarrito> ?? new List<ItemCarrito>();
+
+				ItemCarrito existente = carrito.Find(x => x.ProductoId == productoId);
+				if(existente != null)
+				{
+					if(existente.Cantidad < existente.StockDisponible)
+						existente.Cantidad++;
+				} else
+				{
+					ItemCarrito nuevoItem = new ItemCarrito
+					{
+						ProductoId = productoId,
+						Nombre = producto.Nombre,
+						ImagenUrl = producto.ImagenUrl,
+						Precio = producto.Precio,
+						StockDisponible = producto.Stock,
+						Cantidad = 1
+					};
+					carrito.Add(nuevoItem);
+				}
+				Session["Carrito"] = carrito;
+				((SiteMaster)Master).CargarCarrito();
+				((SiteMaster)Master).ActualizarUpdatePanel();
+			}
 		}
 	}
 }
