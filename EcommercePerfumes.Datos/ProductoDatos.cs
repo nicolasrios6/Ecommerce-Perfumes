@@ -253,5 +253,25 @@ namespace EcommercePerfumes.Datos
 				datos.cerrarConexion();
 			}
 		}
+
+		public void DescontarStock(int productoId, int cantidad)
+		{
+			AccesoDatos datos = new AccesoDatos();
+			try
+			{
+				datos.setConsulta("UPDATE Productos SET Stock = Stock - @Cantidad WHERE Id = @Id");
+				datos.setParametro("@Cantidad", cantidad);
+				datos.setParametro("@Id", productoId);
+				datos.ejecutarAccion();
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error al descontar el stock del producto.", ex);
+			} finally
+			{
+				datos.cerrarConexion();
+			}
+			
+		}
 	}
 }

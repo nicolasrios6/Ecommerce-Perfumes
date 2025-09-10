@@ -82,5 +82,18 @@ namespace EcommercePerfumes.Negocio
 				throw new Exception("Error al modificar el producto.", ex);
 			}
 		}
+
+		public void DescontarStock(int productoId, int cantidad)
+		{
+			ProductoDatos datos = new ProductoDatos();
+			try
+			{
+				datos.DescontarStock(productoId, cantidad);
+			}
+			catch (Exception ex)
+			{
+				throw new Exception("Error al descontar el stock del producto.", ex);
+			}
+		}
 	}
 }
