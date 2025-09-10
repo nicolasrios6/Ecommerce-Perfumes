@@ -20,12 +20,14 @@ namespace EcommercePerfumes
 					liLogin.Visible = false;
 					liRegistro.Visible = false;
 					liLogout.Visible = true;
+					liMisPedidos.Visible = true;
 					
 				} else
 				{
 					liLogin.Visible = true;
 					liRegistro.Visible = true;
 					liLogout.Visible = false;
+					liMisPedidos.Visible = false;
 				}
 
 				CargarCarrito();

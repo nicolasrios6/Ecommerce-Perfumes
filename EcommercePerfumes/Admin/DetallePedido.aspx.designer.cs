@@ -7,102 +7,129 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace EcommercePerfumes
+namespace EcommercePerfumes.Admin
 {
 
 
-	public partial class SiteMaster
+	public partial class DetallePedido
 	{
 
 		/// <summary>
-		/// Control liLogin.
+		/// Control lblNumeroPedidoTitulo.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlGenericControl liLogin;
+		protected global::System.Web.UI.WebControls.Label lblNumeroPedidoTitulo;
 
 		/// <summary>
-		/// Control liRegistro.
+		/// Control pnlInfoPedido.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlGenericControl liRegistro;
+		protected global::System.Web.UI.WebControls.Panel pnlInfoPedido;
 
 		/// <summary>
-		/// Control liMisPedidos.
+		/// Control lblNumeroPedido.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlGenericControl liMisPedidos;
+		protected global::System.Web.UI.WebControls.Label lblNumeroPedido;
 
 		/// <summary>
-		/// Control liLogout.
+		/// Control lblCliente.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.HtmlControls.HtmlGenericControl liLogout;
+		protected global::System.Web.UI.WebControls.Label lblCliente;
 
 		/// <summary>
-		/// Control btnLogout.
+		/// Control lblFecha.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.LinkButton btnLogout;
+		protected global::System.Web.UI.WebControls.Label lblFecha;
 
 		/// <summary>
-		/// Control MainContent.
+		/// Control lblMetodoEnvio.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+		protected global::System.Web.UI.WebControls.Label lblMetodoEnvio;
 
 		/// <summary>
-		/// Control UpdatePanel1.
+		/// Control lblDireccion.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+		protected global::System.Web.UI.WebControls.Label lblDireccion;
 
 		/// <summary>
-		/// Control repCarrito.
+		/// Control lblMetodoPago.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Repeater repCarrito;
+		protected global::System.Web.UI.WebControls.Label lblMetodoPago;
 
 		/// <summary>
-		/// Control pnlCarritoVacio.
+		/// Control lblObservaciones.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pnlCarritoVacio;
+		protected global::System.Web.UI.WebControls.Label lblObservaciones;
 
 		/// <summary>
-		/// Control pnlResumenCarrito.
+		/// Control pnlDetalles.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Panel pnlResumenCarrito;
+		protected global::System.Web.UI.WebControls.Panel pnlDetalles;
+
+		/// <summary>
+		/// Control gvDetalles.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.GridView gvDetalles;
+
+		/// <summary>
+		/// Control lblSubtotal.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblSubtotal;
+
+		/// <summary>
+		/// Control lblEnvio.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblEnvio;
 
 		/// <summary>
 		/// Control lblTotal.
@@ -114,12 +141,30 @@ namespace EcommercePerfumes
 		protected global::System.Web.UI.WebControls.Label lblTotal;
 
 		/// <summary>
-		/// Control btnFinalizarCompra.
+		/// Control pnlEstado.
 		/// </summary>
 		/// <remarks>
 		/// Campo generado automáticamente.
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnFinalizarCompra;
+		protected global::System.Web.UI.WebControls.Panel pnlEstado;
+
+		/// <summary>
+		/// Control ddlEstado.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
+
+		/// <summary>
+		/// Control btnActualizarEstado.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnActualizarEstado;
 	}
 }

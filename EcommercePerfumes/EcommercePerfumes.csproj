@@ -102,9 +102,11 @@
     <Content Include="About.aspx" />
     <Content Include="AccesoDenegado.aspx" />
     <Content Include="Admin\Dashboard.aspx" />
+    <Content Include="Admin\DetallePedido.aspx" />
     <Content Include="Admin\FormularioMarca.aspx" />
     <Content Include="Admin\FormularioProducto.aspx" />
     <Content Include="Admin\Marcas.aspx" />
+    <Content Include="Admin\Pedidos.aspx" />
     <Content Include="Admin\Productos.aspx" />
     <Content Include="Admin\Usuarios.aspx" />
     <Content Include="Checkout.aspx" />
@@ -128,10 +130,12 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
+    <Content Include="DetallePedidoCliente.aspx" />
     <Content Include="DetalleProducto.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Login.aspx" />
+    <Content Include="MisPedidos.aspx" />
     <Content Include="Perfumes.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -210,6 +214,13 @@
     <Compile Include="Admin\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Admin\DetallePedido.aspx.cs">
+      <DependentUpon>DetallePedido.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\DetallePedido.aspx.designer.cs">
+      <DependentUpon>DetallePedido.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Admin\FormularioMarca.aspx.cs">
       <DependentUpon>FormularioMarca.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -230,6 +241,13 @@
     </Compile>
     <Compile Include="Admin\Marcas.aspx.designer.cs">
       <DependentUpon>Marcas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Pedidos.aspx.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin\Pedidos.aspx.designer.cs">
+      <DependentUpon>Pedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Admin\Productos.aspx.cs">
       <DependentUpon>Productos.aspx</DependentUpon>
@@ -282,6 +300,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DetallePedidoCliente.aspx.cs">
+      <DependentUpon>DetallePedidoCliente.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DetallePedidoCliente.aspx.designer.cs">
+      <DependentUpon>DetallePedidoCliente.aspx</DependentUpon>
+    </Compile>
     <Compile Include="DetalleProducto.aspx.cs">
       <DependentUpon>DetalleProducto.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -298,6 +323,13 @@
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MisPedidos.aspx.cs">
+      <DependentUpon>MisPedidos.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MisPedidos.aspx.designer.cs">
+      <DependentUpon>MisPedidos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Perfumes.aspx.cs">
       <DependentUpon>Perfumes.aspx</DependentUpon>

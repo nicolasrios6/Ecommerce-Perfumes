@@ -66,6 +66,7 @@
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
                         <li runat="server" id="liLogin" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Login">Login</a></li>
                         <li runat="server" id="liRegistro" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Registro">Registro</a></li>
+                        <li runat="server" id="liMisPedidos" class="nav-item"><a class="nav-link text-white" runat="server" href="MisPedidos.aspx">Mis Pedidos</a></li>
                         <li id="liLogout" runat="server" class="nav-item" visible="false">
                             <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link text-white" OnClick="btnLogout_Click" Text="Cerrar sesión" />
                         </li>
