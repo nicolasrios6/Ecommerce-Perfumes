@@ -95,5 +95,15 @@ namespace EcommercePerfumes.Negocio
 				throw new Exception("Error al descontar el stock del producto.", ex);
 			}
 		}
+
+		public List<Producto> ObtenerDestacados(int cantidad)
+		{
+			List<Producto> productos = ObtenerActivos();
+			productos = productos.OrderByDescending(p => p.Id)
+				.Take(cantidad)
+				.ToList();
+
+			return productos;
+		}
 	}
 }

@@ -128,12 +128,16 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Generos.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="DetallePedidoCliente.aspx" />
     <Content Include="DetalleProducto.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Imagenes\perf-hombre.jpg" />
+    <Content Include="Imagenes\perf-mujer.jpg" />
+    <Content Include="Imagenes\perf-unisex.jpg" />
     <Content Include="Login.aspx" />
     <Content Include="MisPedidos.aspx" />
     <Content Include="Perfumes.aspx" />

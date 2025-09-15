@@ -1,0 +1,45 @@
+﻿.categoria-card {
+    position: relative;
+    height: 400px; /* 🔧 Ajusta la altura para que todas tengan el mismo tamaño */
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease;
+}
+
+    .categoria-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* ✅ Mantiene proporciones sin deformar */
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .categoria-card .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.3); /* opacidad inicial */
+        transition: background 0.3s ease;
+    }
+
+        .categoria-card .overlay h5 {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+        }
+
+    .categoria-card:hover img {
+        transform: scale(1.05); /* Pequeño zoom al hover */
+        filter: brightness(0.7);
+    }
+
+    .categoria-card:hover .overlay {
+        background: rgba(0, 0, 0, 0.5); /* Más oscuro en hover */
+    }
+
+    .categoria-card:active {
+        transform: scale(0.98); /* Efecto al click */
+    }

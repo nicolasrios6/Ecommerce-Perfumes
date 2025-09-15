@@ -18,6 +18,21 @@ namespace EcommercePerfumes
 			{
 				CargarMarcas();
 				CargarProductos();
+
+				// ✅ Detectar si viene con querystring "genero"
+				if (Request.QueryString["genero"] != null)
+				{
+					string genero = Request.QueryString["genero"];
+
+					// Marcar el RadioButtonList en base al género recibido
+					if (rblGenero.Items.FindByValue(genero) != null)
+					{
+						rblGenero.ClearSelection();
+						rblGenero.Items.FindByValue(genero).Selected = true;
+					}
+				}
+
+				AplicarFiltros(); // ✅ Aplica los filtros con el género ya seleccionado
 			}
 		}
 

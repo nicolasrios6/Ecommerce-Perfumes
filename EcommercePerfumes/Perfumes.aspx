@@ -43,7 +43,7 @@
                         <div class="row gap-4">
                             <asp:Repeater runat="server" ID="repPerfumes" OnItemCommand="repPerfumes_ItemCommand">
                                 <ItemTemplate>
-                                    <div class="card d-flex flex-column" style="width: 18rem;">
+                                    <div class="card d-flex flex-column text-dark" style="width: 18rem;">
                                         <img src='<%#Eval("ImagenUrl") %>' class="card-img-top m-auto w-50" alt="...">
                                         <div class="card-body d-flex flex-column text-center">
                                             <h5 class="card-title"><%#Eval("Nombre") %></h5>

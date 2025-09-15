@@ -49,7 +49,7 @@
                 <div class="d-flex flex-row overflow-auto gap-3 pb-3">
                     <asp:Repeater ID="repRelacionados" runat="server" OnItemCommand="repRelacionados_ItemCommand">
                         <ItemTemplate>
-                            <div class="card" style="min-width: 16rem;">
+                            <div class="card text-dark" style="min-width: 16rem;">
                                 <img src='<%#Eval("ImagenUrl") %>' class="card-img-top m-auto w-50" alt="...">
                                 <div class="card-body text-center d-flex flex-column">
                                     <h5 class="card-title"><%#Eval("Nombre") %></h5>
