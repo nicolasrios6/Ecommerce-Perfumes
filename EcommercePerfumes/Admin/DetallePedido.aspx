@@ -1,31 +1,50 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetallePedido.aspx.cs" Inherits="EcommercePerfumes.Admin.DetallePedido" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Pedido N° <asp:Label ID="lblNumeroPedidoTitulo" runat="server" /></h2>
+    <h2>Pedido N°
+        <asp:Label ID="lblNumeroPedidoTitulo" runat="server" /></h2>
     <a href="Pedidos.aspx" class="btn btn-secondary mb-3">Volver</a>
 
     <asp:Panel ID="pnlInfoPedido" CssClass="mb-4 border p-3 rounded bg-light" runat="server">
         <h3>Información del Pedido</h3>
-        <p><strong>Número:</strong>
+        <p>
+            <strong>Número:</strong>
             <asp:Label ID="lblNumeroPedido" runat="server" />
         </p>
-        <p><strong>Cliente:</strong>
+        <p>
+            <strong>Cliente:</strong>
             <asp:Label ID="lblCliente" runat="server" />
         </p>
-        <p><strong>Fecha:</strong>
+        <p>
+            <strong>Fecha:</strong>
             <asp:Label ID="lblFecha" runat="server" />
         </p>
-        <p><strong>Método de Envío:</strong>
+        <p>
+            <strong>Método de Envío:</strong>
             <asp:Label ID="lblMetodoEnvio" runat="server" />
         </p>
-        <p><strong>Dirección de Envío:</strong>
+        <p>
+            <strong>Dirección de Envío:</strong>
             <asp:Label ID="lblDireccion" runat="server" />
         </p>
-        <p><strong>Método de Pago:</strong>
+        <p>
+            <strong>Método de Pago:</strong>
             <asp:Label ID="lblMetodoPago" runat="server" />
         </p>
-        <p><strong>Observaciones:</strong>
+        <p>
+            <strong>Observaciones:</strong>
             <asp:Label ID="lblObservaciones" runat="server" />
         </p>
+    </asp:Panel>
+
+    <asp:Panel ID="pnlComprobante" runat="server" CssClass="mb-4 border p-3 rounded bg-white" Visible="false">
+        <h4>Comprobante de Pago</h4>
+        <asp:HyperLink ID="lnkComprobante" runat="server" Target="_blank" CssClass="btn btn-outline-primary">
+        Ver Comprobante
+        </asp:HyperLink>
+        <br />
+        <br />
+        <asp:Image ID="imgComprobante" runat="server" CssClass="img-fluid border rounded" Visible="false" />
     </asp:Panel>
 
     <asp:Panel ID="pnlDetalles" runat="server" CssClass="mb-4 p-3">

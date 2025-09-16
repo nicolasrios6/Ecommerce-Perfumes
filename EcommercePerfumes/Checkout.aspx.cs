@@ -71,6 +71,56 @@ namespace EcommercePerfumes
 				return;
 			}
 
+			bool esTransferencia = rblPago.SelectedValue == "Transferencia";
+			if (esTransferencia && !fuComprobante.HasFile)
+			{
+				lblError.Text = "Debes adjuntar el comprobante de pago para transferencia.";
+				lblError.CssClass = "text-danger";
+				return;
+			}
+			// Si hay comprobante, validamos extensión y tamaño (ejemplo: máximo 5MB)
+			string comprobanteRutaRelativa = null;
+			string comprobanteNombreFisico = null;
+
+			if(esTransferencia && fuComprobante.HasFile)
+			{
+				int maxBytes = 5 * 1024 * 1024;
+				string[] allowedExt = new[] {".jpg", ".jpeg", ".png", ".pdf" };
+
+				string ext = System.IO.Path.GetExtension(fuComprobante.FileName).ToLowerInvariant();
+				if(!allowedExt.Contains(ext))
+				{
+					lblError.Text = "Tipo de archivo no permitido. Sólo JPG, PNG o PDF.";
+					lblError.CssClass = "text-danger";
+					return;
+				}
+				if (fuComprobante.PostedFile.ContentLength > maxBytes)
+				{
+					lblError.Text = "El comprobante supera el tamaño máximo (5 MB).";
+					lblError.CssClass = "text-danger";
+					return;
+				}
+
+				string comprobantesFolder = Server.MapPath("~/Comprobantes/");
+				if(!System.IO.Directory.Exists(comprobantesFolder))
+					System.IO.Directory.CreateDirectory(comprobantesFolder);
+
+				comprobanteNombreFisico = Guid.NewGuid().ToString() + ext;
+				string rutaFisica = System.IO.Path.Combine(comprobantesFolder, comprobanteNombreFisico);
+				try
+				{
+					fuComprobante.SaveAs(rutaFisica);
+					comprobanteRutaRelativa = "~/Comprobantes/" + comprobanteNombreFisico;
+				}
+				catch (Exception ex)
+				{
+					lblError.Text = "No se pudo guardar el comprobante. Intentá nuevamente.";
+					lblError.CssClass = "text-danger";
+					// loggear ex
+					return;
+				}
+			}
+
 			decimal subtotal = carrito.Sum(i => i.Subtotal);
 			decimal envio = rblEnvio.SelectedValue == "Envio" ? 8000 : 0;
 			decimal total = subtotal + envio;
@@ -87,6 +137,7 @@ namespace EcommercePerfumes
 				MetodoEnvio = rblEnvio.SelectedValue,
 				MetodoPago = rblPago.SelectedValue,
 				Observaciones = txtObservaciones.Text.Trim(),
+				ComprobanteUrl = comprobanteRutaRelativa,
 				Detalles = carrito.Select(item => new DetallePedido
 				{
 					ProductoId = item.ProductoId,
@@ -117,6 +168,19 @@ namespace EcommercePerfumes
 			}
 			catch (Exception ex)
 			{
+				// Si falló la inserción y ya guardamos un comprobante en disco, borrarlo para evitar archivos huérfanos
+				if (!string.IsNullOrEmpty(comprobanteNombreFisico))
+				{
+					try
+					{
+						string rutaFisica = Server.MapPath("~/Comprobantes/" + comprobanteNombreFisico);
+						if (System.IO.File.Exists(rutaFisica))
+							System.IO.File.Delete(rutaFisica);
+					}
+					catch {
+						throw new Exception();
+					}
+				}
 				// Mostrar error
 				lblError.Text = "Hubo un error al procesar el pedido.";
 			}

@@ -19,8 +19,8 @@
     <link href="Content/Generos.css" rel="stylesheet" />
 
 </head>
-<body class="bg-dark text-light">
-    <form runat="server">
+<body>
+    <form runat="server" enctype="multipart/form-data">
         <asp:ScriptManager runat="server">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
@@ -68,6 +68,7 @@
                         <li runat="server" id="liLogin" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Login">Login</a></li>
                         <li runat="server" id="liRegistro" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Registro">Registro</a></li>
                         <li runat="server" id="liMisPedidos" class="nav-item"><a class="nav-link text-white" runat="server" href="MisPedidos.aspx">Mis Pedidos</a></li>
+                        <li runat="server" id="liPanelAdmin" class="nav-item"><a class="nav-link text-white" runat="server" href="/Admin/Dashboard.aspx">Panel Admin</a></li>
                         <li id="liLogout" runat="server" class="nav-item" visible="false">
                             <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link text-white" OnClick="btnLogout_Click" Text="Cerrar sesión" />
                         </li>

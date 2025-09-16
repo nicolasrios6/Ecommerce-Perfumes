@@ -1,4 +1,5 @@
 ﻿using EcommercePerfumes.Entidades;
+using EcommercePerfumes.Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,15 @@ namespace EcommercePerfumes
 					liLogin.Visible = false;
 					liRegistro.Visible = false;
 					liLogout.Visible = true;
-					liMisPedidos.Visible = true;
+					if (Seguridad.EsCliente(Page.Session))
+					{
+						liMisPedidos.Visible = true;
+						liPanelAdmin.Visible = false;
+					} else
+					{
+						liMisPedidos.Visible = false;
+						liPanelAdmin.Visible = true;
+					}
 					
 				} else
 				{
@@ -28,6 +37,7 @@ namespace EcommercePerfumes
 					liRegistro.Visible = true;
 					liLogout.Visible = false;
 					liMisPedidos.Visible = false;
+					liPanelAdmin.Visible = false;
 				}
 
 				CargarCarrito();

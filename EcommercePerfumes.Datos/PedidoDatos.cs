@@ -75,7 +75,8 @@ namespace EcommercePerfumes.Datos
 						DireccionEnvio = datos.Lector["DireccionEnvio"].ToString(),
 						MetodoEnvio = datos.Lector["MetodoEnvio"].ToString(),
 						MetodoPago = datos.Lector["MetodoPago"].ToString(),
-						Observaciones = datos.Lector["Observaciones"].ToString()
+						Observaciones = datos.Lector["Observaciones"].ToString(),
+						ComprobanteUrl = datos.Lector["ComprobanteUrl"].ToString()
 					};
 
 					if (datos.Lector["NombreUsuario"] != DBNull.Value)
@@ -174,6 +175,7 @@ namespace EcommercePerfumes.Datos
 				datos.setParametro("@MetodoEnvio", pedido.MetodoEnvio);
 				datos.setParametro("@MetodoPago", pedido.MetodoPago);
 				datos.setParametro("@Observaciones", (object)pedido.Observaciones ?? DBNull.Value);
+				datos.setParametro("@ComprobanteUrl", pedido.ComprobanteUrl);
 
 				datos.setParametro("@NuevoId", 0);
 				datos.comando.Parameters["@NuevoId"].Direction = System.Data.ParameterDirection.Output;

@@ -68,10 +68,15 @@
                                     <p><strong>Cuenta: </strong>Nicolas Rios - Naranja X</p>
                                     <p>Luego de realizar la transferencia, confirmá la compra con el botón de abajo y envianos el comprobante al siguiente número: <strong>2616295808</strong> indicandonos tu nombre y apellido.</p>
                                 </div>
+
+                                <div class="mb-3">
+                                    <label>Adjuntar comprobante:</label>
+                                    <asp:FileUpload ID="fuComprobante" runat="server" CssClass="form-control"/>
+                                </div>
                             </asp:Panel>
                         </div>
                     </div>
-
+                    
                     <!-- BOTÓN CONFIRMAR -->
                     <asp:Button ID="btnConfirmarCompra" runat="server" Text="Confirmar compra"
                         CssClass="btn btn-success btn-lg w-100 mb-4" OnClick="btnConfirmarCompra_Click" />
@@ -114,5 +119,8 @@
             </div>
 
         </ContentTemplate>
+        <Triggers>
+            <asp:PostBackTrigger ControlID="btnConfirmarCompra" />
+        </Triggers>
     </asp:UpdatePanel>
 </asp:Content>

@@ -43,6 +43,22 @@ namespace EcommercePerfumes.Admin
 
 			gvDetalles.DataSource = pedido.Detalles;
 			gvDetalles.DataBind();
+
+			// *** Comprobante ***
+			if (!string.IsNullOrEmpty(pedido.ComprobanteUrl))
+			{
+				pnlComprobante.Visible = true;
+				lnkComprobante.NavigateUrl = pedido.ComprobanteUrl;
+
+				// Si es imagen, mostrarla embebida
+				if (pedido.ComprobanteUrl.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase) ||
+					pedido.ComprobanteUrl.EndsWith(".jpeg", StringComparison.OrdinalIgnoreCase) ||
+					pedido.ComprobanteUrl.EndsWith(".png", StringComparison.OrdinalIgnoreCase))
+				{
+					imgComprobante.Visible = true;
+					imgComprobante.ImageUrl = pedido.ComprobanteUrl;
+				}
+			}
 		}
 
 		protected void btnActualizarEstado_Click(object sender, EventArgs e)
