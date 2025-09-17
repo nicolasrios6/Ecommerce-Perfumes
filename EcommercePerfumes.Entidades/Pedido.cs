@@ -21,6 +21,7 @@ namespace EcommercePerfumes.Entidades
 		public string Observaciones { get; set; }
 		public string NombreUsuario { get; set; }
 		public string ComprobanteUrl { get; set; }
+		public string NumeroSeguimiento { get; set; }
 
 		public List<DetallePedido> Detalles { get; set; } = new List<DetallePedido>();
 	}

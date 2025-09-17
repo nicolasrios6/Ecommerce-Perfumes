@@ -186,6 +186,24 @@ namespace EcommercePerfumes.Admin
 		protected global::System.Web.UI.WebControls.DropDownList ddlEstado;
 
 		/// <summary>
+		/// Control pnlTracking.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Panel pnlTracking;
+
+		/// <summary>
+		/// Control txtTracking.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.TextBox txtTracking;
+
+		/// <summary>
 		/// Control btnActualizarEstado.
 		/// </summary>
 		/// <remarks>

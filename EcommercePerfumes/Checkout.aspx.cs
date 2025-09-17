@@ -159,6 +159,8 @@ namespace EcommercePerfumes
 				{
 					productoNegocio.DescontarStock(item.ProductoId, item.Cantidad);
 				}
+				string htmlDetalle = GenerarHtmlDetalle(carrito, subtotal, envio, total);
+				EmailService.EnviarConfirmacionPedido(usuario.Email, pedido.Id, htmlDetalle);
 
 				// Limpiar carrito
 				Session["Carrito"] = null;
@@ -189,6 +191,40 @@ namespace EcommercePerfumes
 		protected void rblPago_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			Panel1.Visible = (rblPago.SelectedValue == "Transferencia");
+		}
+
+		private string GenerarHtmlDetalle(List<ItemCarrito> carrito, decimal subtotal, decimal envio, decimal total)
+		{
+			System.Text.StringBuilder sb = new System.Text.StringBuilder();
+			
+			sb.Append("<p>Estos son los detalles de tu pedido:</p>");
+			sb.Append("<table style='border-collapse: collapse; width: 100%;'>");
+			sb.Append("<tr style='background-color:#f2f2f2;'>");
+			sb.Append("<th style='border: 1px solid #ddd; padding: 8px;'>Producto</th>");
+			sb.Append("<th style='border: 1px solid #ddd; padding: 8px;'>Cantidad</th>");
+			sb.Append("<th style='border: 1px solid #ddd; padding: 8px;'>Precio</th>");
+			sb.Append("<th style='border: 1px solid #ddd; padding: 8px;'>Subtotal</th>");
+			sb.Append("</tr>");
+
+			foreach (var item in carrito)
+			{
+				sb.Append("<tr>");
+				sb.Append($"<td style='border: 1px solid #ddd; padding: 8px;'>{item.Nombre}</td>");
+				sb.Append($"<td style='border: 1px solid #ddd; padding: 8px;'>{item.Cantidad}</td>");
+				sb.Append($"<td style='border: 1px solid #ddd; padding: 8px;'>${item.Precio:N0}</td>");
+				sb.Append($"<td style='border: 1px solid #ddd; padding: 8px;'>${item.Subtotal:N0}</td>");
+				sb.Append("</tr>");
+			}
+
+			sb.Append("</table>");
+			sb.Append("<br/>");
+			sb.Append($"<p><strong>Subtotal:</strong> ${subtotal:N0}</p>");
+			sb.Append($"<p><strong>Envío:</strong> ${envio:N0}</p>");
+			sb.Append($"<p><strong>Total:</strong> ${total:N0}</p>");
+			sb.Append("<br/>");
+			sb.Append("<p>En breve recibirás otro correo cuando tu pedido cambie de estado.</p>");
+
+			return sb.ToString();
 		}
 	}
 }

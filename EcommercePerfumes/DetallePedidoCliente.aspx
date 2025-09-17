@@ -1,6 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetallePedidoCliente.aspx.cs" Inherits="EcommercePerfumes.DetallePedidoCliente" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-     <h2>Pedido N°
+    <h2>Pedido N°
         <asp:Label ID="lblNumeroPedidoTitulo" runat="server" /></h2>
     <a href="MisPedidos.aspx" class="btn btn-secondary mb-3">Volver</a>
 
@@ -34,7 +35,18 @@
             <strong>Observaciones:</strong>
             <asp:Label ID="lblObservaciones" runat="server" />
         </p>
+        <p>
+            <strong>Estado del pedido:</strong>
+            <asp:Label ID="lblEstado" runat="server" />
+        </p>
     </asp:Panel>
+
+    <asp:Panel ID="pnlComprobante" runat="server" CssClass="mb-4 border p-3 rounded bg-white" Visible="false">
+    <h4>Comprobante de Pago</h4>
+    <asp:HyperLink ID="lnkComprobante" runat="server" Target="_blank" CssClass="btn btn-outline-primary">
+        Ver Comprobante
+    </asp:HyperLink>
+</asp:Panel>
 
     <asp:Panel ID="pnlDetalles" runat="server" CssClass="mb-4 p-3">
         <h4>Productos</h4>

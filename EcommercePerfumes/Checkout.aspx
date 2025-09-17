@@ -66,7 +66,7 @@
                                     <p><strong>ALIAS: </strong>NICOLASRIOS.NX</p>
                                     <p><strong>CBU: </strong>123123123123123</p>
                                     <p><strong>Cuenta: </strong>Nicolas Rios - Naranja X</p>
-                                    <p>Luego de realizar la transferencia, confirmá la compra con el botón de abajo y envianos el comprobante al siguiente número: <strong>2616295808</strong> indicandonos tu nombre y apellido.</p>
+                                    <%--<p>Luego de realizar la transferencia, confirmá la compra con el botón de abajo y envianos el comprobante al siguiente número: <strong>2616295808</strong> indicandonos tu nombre y apellido.</p>--%>
                                 </div>
 
                                 <div class="mb-3">

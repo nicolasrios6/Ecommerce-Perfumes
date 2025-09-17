@@ -62,12 +62,12 @@ namespace EcommercePerfumes.Negocio
 			}
 		}
 
-		public void ActualizarEstado(int id, string estado)
+		public void ActualizarEstado(int id, string estado, string numeroSeguimiento)
 		{
 			PedidoDatos datos = new PedidoDatos();
 			try
 			{
-				datos.ActualizarEstado(id, estado);
+				datos.ActualizarEstado(id, estado, numeroSeguimiento);
 			}
 			catch (Exception ex)
 			{

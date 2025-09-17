@@ -96,6 +96,33 @@ namespace EcommercePerfumes
 		protected global::System.Web.UI.WebControls.Label lblObservaciones;
 
 		/// <summary>
+		/// Control lblEstado.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblEstado;
+
+		/// <summary>
+		/// Control pnlComprobante.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Panel pnlComprobante;
+
+		/// <summary>
+		/// Control lnkComprobante.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.HyperLink lnkComprobante;
+
+		/// <summary>
 		/// Control pnlDetalles.
 		/// </summary>
 		/// <remarks>

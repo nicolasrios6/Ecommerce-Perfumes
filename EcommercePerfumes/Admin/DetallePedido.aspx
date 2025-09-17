@@ -71,16 +71,27 @@
         </div>
     </asp:Panel>
 
-    <asp:Panel ID="pnlEstado" runat="server" CssClass="border p-3 bg-white rounded">
-        <h4>Estado del Pedido</h4>
-        <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control w-25 mb-3">
-            <asp:ListItem Text="Pendiente" Value="Pendiente" />
-            <asp:ListItem Text="Procesando" Value="Procesando" />
-            <asp:ListItem Text="Enviado" Value="Enviado" />
-            <asp:ListItem Text="Entregado" Value="Entregado" />
-            <asp:ListItem Text="Cancelado" Value="Cancelado" />
-        </asp:DropDownList>
+    <asp:UpdatePanel runat="server">
+        <ContentTemplate>
 
-        <asp:Button ID="btnActualizarEstado" runat="server" Text="Actualizar Estado" CssClass="btn btn-primary" OnClick="btnActualizarEstado_Click" />
-    </asp:Panel>
+
+            <asp:Panel ID="pnlEstado" runat="server" CssClass="border p-3 bg-white rounded">
+                <h4>Estado del Pedido</h4>
+                <asp:DropDownList ID="ddlEstado" runat="server" CssClass="form-control w-25 mb-3" AutoPostBack="true" OnSelectedIndexChanged="ddlEstado_SelectedIndexChanged">
+                    <asp:ListItem Text="Pendiente" Value="Pendiente" />
+                    <asp:ListItem Text="Procesando" Value="Procesando" />
+                    <asp:ListItem Text="Enviado" Value="Enviado" />
+                    <asp:ListItem Text="Entregado" Value="Entregado" />
+                    <asp:ListItem Text="Cancelado" Value="Cancelado" />
+                </asp:DropDownList>
+
+                <asp:Panel ID="pnlTracking" runat="server" Visible="false" CssClass="mb-3">
+                    <label>Número de seguimiento:</label>
+                    <asp:TextBox ID="txtTracking" runat="server" CssClass="form-control w-50" />
+                </asp:Panel>
+
+                <asp:Button ID="btnActualizarEstado" runat="server" Text="Actualizar Estado" CssClass="btn btn-primary" OnClick="btnActualizarEstado_Click" />
+            </asp:Panel>
+        </ContentTemplate>
+    </asp:UpdatePanel>
 </asp:Content>

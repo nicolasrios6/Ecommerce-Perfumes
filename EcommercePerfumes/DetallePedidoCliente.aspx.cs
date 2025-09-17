@@ -33,6 +33,7 @@ namespace EcommercePerfumes
 			lblDireccion.Text = pedido.DireccionEnvio;
 			lblMetodoPago.Text = pedido.MetodoPago;
 			lblObservaciones.Text = pedido.Observaciones;
+			lblEstado.Text = pedido.Estado;
 
 			lblSubtotal.Text = $"${pedido.Subtotal:N0}";
 			lblEnvio.Text = $"${pedido.Envio:N0}";
@@ -40,6 +41,13 @@ namespace EcommercePerfumes
 
 			gvDetalles.DataSource = pedido.Detalles;
 			gvDetalles.DataBind();
+
+			// *** Comprobante ***
+			if (!string.IsNullOrEmpty(pedido.ComprobanteUrl))
+			{
+				pnlComprobante.Visible = true;
+				lnkComprobante.NavigateUrl = pedido.ComprobanteUrl;
+			}
 		}
 	}
 }

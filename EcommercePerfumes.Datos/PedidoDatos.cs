@@ -34,7 +34,8 @@ namespace EcommercePerfumes.Datos
 						MetodoEnvio = datos.Lector["MetodoEnvio"].ToString(),
 						MetodoPago = datos.Lector["MetodoPago"].ToString(),
 						Observaciones = datos.Lector["Observaciones"].ToString(),
-						NombreUsuario = datos.Lector["NombreUsuario"].ToString()
+						NombreUsuario = datos.Lector["NombreUsuario"].ToString(),
+						NumeroSeguimiento = datos.Lector["NumeroSeguimiento"].ToString()
 					};
 
 					lista.Add(pedido);
@@ -76,7 +77,8 @@ namespace EcommercePerfumes.Datos
 						MetodoEnvio = datos.Lector["MetodoEnvio"].ToString(),
 						MetodoPago = datos.Lector["MetodoPago"].ToString(),
 						Observaciones = datos.Lector["Observaciones"].ToString(),
-						ComprobanteUrl = datos.Lector["ComprobanteUrl"].ToString()
+						ComprobanteUrl = datos.Lector["ComprobanteUrl"].ToString(),
+						NumeroSeguimiento = datos.Lector["NumeroSeguimiento"].ToString()
 					};
 
 					if (datos.Lector["NombreUsuario"] != DBNull.Value)
@@ -141,7 +143,8 @@ namespace EcommercePerfumes.Datos
 						MetodoEnvio = datos.Lector["MetodoEnvio"].ToString(),
 						MetodoPago = datos.Lector["MetodoPago"].ToString(),
 						Observaciones = datos.Lector["Observaciones"].ToString(),
-						NombreUsuario = datos.Lector["NombreUsuario"].ToString()
+						NombreUsuario = datos.Lector["NombreUsuario"].ToString(),
+						NumeroSeguimiento = datos.Lector["NumeroSeguimiento"].ToString()
 					};
 
 					lista.Add(pedido);
@@ -215,7 +218,7 @@ namespace EcommercePerfumes.Datos
 			}
 		}
 
-		public void ActualizarEstado(int id, string estado)
+		public void ActualizarEstado(int id, string estado, string numeroSeguimiento)
 		{
 			AccesoDatos datos = new AccesoDatos();
 			try
@@ -223,6 +226,7 @@ namespace EcommercePerfumes.Datos
 				datos.setProcedimiento("Pedido_ActualizarEstado");
 				datos.setParametro("@Id", id);
 				datos.setParametro("@Estado", estado);
+				datos.setParametro("@NumeroSeguimiento", string.IsNullOrEmpty(numeroSeguimiento) ? (object)DBNull.Value : numeroSeguimiento);
 				datos.ejecutarAccion();
 			}
 			catch (Exception ex)

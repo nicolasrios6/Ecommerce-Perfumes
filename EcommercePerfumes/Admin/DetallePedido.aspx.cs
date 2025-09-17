@@ -65,10 +65,20 @@ namespace EcommercePerfumes.Admin
         {
 			int id = Convert.ToInt32(Request.QueryString["id"]);
 			string nuevoEstado = ddlEstado.SelectedValue;
+			string seguimiento = ddlEstado.SelectedValue == "Enviado" ? txtTracking.Text.Trim() : null;
 
 			PedidoNegocio negocio = new PedidoNegocio();
-			negocio.ActualizarEstado(id, nuevoEstado);
+			negocio.ActualizarEstado(id, nuevoEstado, seguimiento);
+			Pedido pedidoActual = negocio.ObtenerPorId(id);
+			UsuarioNegocio usuarioNegocio = new UsuarioNegocio();
+			var usuarioActual = usuarioNegocio.BuscarPorId(pedidoActual.UsuarioId);
+			EmailService.EnviarCambioEstado(usuarioActual.Email, pedidoActual.Id, pedidoActual.Estado, seguimiento);
 			Response.Redirect("Pedidos.aspx", false);
 		}
-    }
+
+		protected void ddlEstado_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			pnlTracking.Visible = ddlEstado.SelectedValue == "Enviado";
+		}
+	}
 }
