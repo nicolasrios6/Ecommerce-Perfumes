@@ -10,10 +10,6 @@ namespace EcommercePerfumes.Negocio
 {
 	public class EmailService
 	{
-		private static string smtpHost = "smtp.gmail.com";
-		private static int smtpPort = 587;
-		private static string smtpUser = "nicolasrios.dev@gmail.com";
-		private static string smtpPass = "wjloxrgusvjgpzgr";
 		private static string remitente = "nicolasrios.dev@gmail.com";
 
 		public static void EnviarCambioEstado(string destinatario, int numeroPedido, string estado, string seguimiento = null)
@@ -49,10 +45,10 @@ namespace EcommercePerfumes.Negocio
 				mail.Body = cuerpoHtml;
 				mail.IsBodyHtml = true;
 
-				using (SmtpClient smtp = new SmtpClient(smtpHost, smtpPort))
+				using (SmtpClient smtp = new SmtpClient())
 				{
-					smtp.Credentials = new NetworkCredential(smtpUser, smtpPass);
-					smtp.EnableSsl = true;
+					//smtp.Credentials = new NetworkCredential(smtpUser, smtpPass);
+					//smtp.EnableSsl = true;
 					smtp.Send(mail);
 				}
 			}

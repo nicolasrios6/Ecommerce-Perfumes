@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Checkout.aspx.cs" Inherits="EcommercePerfumes.Checkout" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Checkout</h2>
 
     <asp:UpdatePanel runat="server">
         <ContentTemplate>
-
+            <asp:ValidationSummary ID="valSummary" runat="server" CssClass="alert alert-danger"
+                DisplayMode="BulletList" ShowSummary="true" />
             <div class="row">
                 <%-- Formulario de datos --%>
                 <div class="col-7">
@@ -71,12 +73,12 @@
 
                                 <div class="mb-3">
                                     <label>Adjuntar comprobante:</label>
-                                    <asp:FileUpload ID="fuComprobante" runat="server" CssClass="form-control"/>
+                                    <asp:FileUpload ID="fuComprobante" runat="server" CssClass="form-control" />
                                 </div>
                             </asp:Panel>
                         </div>
                     </div>
-                    
+
                     <!-- BOTÓN CONFIRMAR -->
                     <asp:Button ID="btnConfirmarCompra" runat="server" Text="Confirmar compra"
                         CssClass="btn btn-success btn-lg w-100 mb-4" OnClick="btnConfirmarCompra_Click" />

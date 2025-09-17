@@ -71,6 +71,18 @@ namespace EcommercePerfumes
 				return;
 			}
 
+			//Efectivo sólo si Retiro en local está seleccionado
+			if (rblPago.SelectedValue == "Efectivo" && rblEnvio.SelectedValue != "Retiro")
+			{
+				Page.Validators.Add(new CustomValidator
+				{
+					ErrorMessage = "Si pagás en efectivo, debes seleccionar 'Retiro en el Local' como método de envío.",
+					IsValid = false
+				});
+				return;
+				
+			}
+
 			bool esTransferencia = rblPago.SelectedValue == "Transferencia";
 			if (esTransferencia && !fuComprobante.HasFile)
 			{
@@ -78,8 +90,8 @@ namespace EcommercePerfumes
 				lblError.CssClass = "text-danger";
 				return;
 			}
-			// Si hay comprobante, validamos extensión y tamaño (ejemplo: máximo 5MB)
-			string comprobanteRutaRelativa = null;
+				// Si hay comprobante, validamos extensión y tamaño (ejemplo: máximo 5MB)
+				string comprobanteRutaRelativa = null;
 			string comprobanteNombreFisico = null;
 
 			if(esTransferencia && fuComprobante.HasFile)
