@@ -65,6 +65,7 @@ namespace EcommercePerfumes
 				Session["Carrito"] = carrito;
 				((SiteMaster)Master).CargarCarrito();
 				((SiteMaster)Master).ActualizarUpdatePanel();
+				((SiteMaster)Master).ActualizarUpdatePanelCarrito();
 			}
 		}
 	}

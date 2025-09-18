@@ -15,6 +15,8 @@ namespace EcommercePerfumes
 		{
 			if (!IsPostBack)
 			{
+				ActualizarCarritoCount();
+
 				if (Session["Usuario"] != null)
 				{
 					Usuario usuario = (Usuario)Session["Usuario"];
@@ -76,6 +78,8 @@ namespace EcommercePerfumes
 				pnlCarritoVacio.Visible = true;
 				pnlResumenCarrito.Visible = false;
 			}
+
+			ActualizarCarritoCount();
 		}
 
 		protected void repCarrito_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -109,12 +113,18 @@ namespace EcommercePerfumes
 
 			Session["Carrito"] = carrito;
 			CargarCarrito();
-			UpdatePanel1.Update(); // refresca el offcanvas sin recargar toda la página
+			ActualizarCarritoCount();
+			ActualizarUpdatePanel();
+			ActualizarUpdatePanelCarrito();
 		}
 
 		public void ActualizarUpdatePanel()
 		{
 			UpdatePanel1.Update();
+		}
+		public void ActualizarUpdatePanelCarrito()
+		{
+			upCarrito.Update();
 		}
 
 		protected void repCarrito_ItemDataBound(object sender, RepeaterItemEventArgs e)
@@ -136,6 +146,16 @@ namespace EcommercePerfumes
 					}
 				}
 			}
+		}
+
+		public void ActualizarCarritoCount()
+		{
+			List<ItemCarrito> carrito = Session["Carrito"] as List<ItemCarrito> ?? new List<ItemCarrito>();
+			int totalProductos = carrito.Sum(item => item.Cantidad);
+
+			lblCarritoCount.Text = totalProductos > 0 ? totalProductos.ToString() : "";
+
+			lblCarritoCount.Parent.Visible = totalProductos > 0;
 		}
 	}
 }

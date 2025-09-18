@@ -124,6 +124,7 @@ namespace EcommercePerfumes
 			Session["Carrito"] = carrito;
 			((SiteMaster)Master).CargarCarrito();
 			((SiteMaster)Master).ActualizarUpdatePanel();
+			((SiteMaster)Master).ActualizarUpdatePanelCarrito();
 		}
 
 		protected void repRelacionados_ItemCommand(object source, RepeaterCommandEventArgs e)
