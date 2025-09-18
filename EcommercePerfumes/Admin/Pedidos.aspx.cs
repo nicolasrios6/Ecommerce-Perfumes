@@ -1,4 +1,5 @@
-﻿using EcommercePerfumes.Negocio;
+﻿using EcommercePerfumes.Entidades;
+using EcommercePerfumes.Negocio;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -70,6 +71,40 @@ namespace EcommercePerfumes.Admin
 			}
 
 			lblEstado.CssClass = css;
+		}
+
+		protected void btnFiltrar_Click(object sender, EventArgs e)
+		{
+			List<Pedido> pedidos = Session["listaPedidos"] as List<Pedido> ?? new List<Pedido>();
+
+			// Filtro por fecha
+			DateTime? fechaDesde = string.IsNullOrEmpty(txtFechaDesde.Text) ? (DateTime?)null : DateTime.Parse(txtFechaDesde.Text);
+			DateTime? fechaHasta = string.IsNullOrEmpty(txtFechaHasta.Text) ? (DateTime?)null : DateTime.Parse(txtFechaHasta.Text);
+
+			if (fechaHasta.HasValue)
+				fechaHasta = fechaHasta.Value.Date.AddDays(1).AddTicks(-1); // incluye todo el día
+
+			// Filtro por estado
+			string estadoSeleccionado = ddlEstado.SelectedValue;
+
+			var filtrados = pedidos.Where(p =>
+				(!fechaDesde.HasValue || p.Fecha >= fechaDesde.Value) &&
+				(!fechaHasta.HasValue || p.Fecha <= fechaHasta.Value) &&
+				(string.IsNullOrEmpty(estadoSeleccionado) || p.Estado.Equals(estadoSeleccionado, StringComparison.OrdinalIgnoreCase))
+			).ToList();
+
+			gvPedidos.DataSource = filtrados;
+			gvPedidos.DataBind();
+		}
+
+		protected void btnLimpiar_Click(object sender, EventArgs e)
+		{
+			txtFechaDesde.Text = string.Empty;
+			txtFechaHasta.Text = string.Empty;
+			ddlEstado.SelectedIndex = 0;
+
+			gvPedidos.DataSource = Session["listaPedidos"];
+			gvPedidos.DataBind();
 		}
 	}
 }

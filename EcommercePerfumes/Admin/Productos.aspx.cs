@@ -14,7 +14,7 @@ namespace EcommercePerfumes.Admin
 		protected void Page_Load(object sender, EventArgs e)
 		{
 			Seguridad.VerificarAdmin(this);
-			if(!IsPostBack)
+			if (!IsPostBack)
 			{
 				CargarMarcas();
 				CargarProductos();
@@ -43,10 +43,10 @@ namespace EcommercePerfumes.Admin
 		}
 
 		protected void gvProductos_SelectedIndexChanged(object sender, EventArgs e)
-        {
+		{
 			int idSeleccionado = Convert.ToInt32(gvProductos.SelectedDataKey.Value);
 			Response.Redirect($"FormularioProducto.aspx?id={idSeleccionado}");
-        }
+		}
 
 		protected void filtrosChanged(object sender, EventArgs e)
 		{
@@ -73,5 +73,23 @@ namespace EcommercePerfumes.Admin
 			gvProductos.DataSource = lista;
 			gvProductos.DataBind();
 		}
-    }
+
+		protected void btnResetFiltros_Click(object sender, EventArgs e)
+		{
+			// 1.Resetear los valores de los filtros
+
+			ddlMarcas.SelectedIndex = 0;  // Selecciona la primera opción (debería ser "Todas")
+			rblGenero.ClearSelection();
+			rblGenero.Items[0].Selected = true; // Marca "Todos"
+
+			// 2. Volver a cargar la lista completa de productos
+			ProductoNegocio negocio = new ProductoNegocio();
+			var listaCompleta = negocio.ObtenerTodos();
+
+			// 3. Guardar en sesión y enlazar al GridView
+			Session["listaProductos"] = listaCompleta;
+			gvProductos.DataSource = listaCompleta;
+			gvProductos.DataBind();
+		}
+	}
 }
