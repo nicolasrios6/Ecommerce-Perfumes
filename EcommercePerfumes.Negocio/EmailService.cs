@@ -15,7 +15,7 @@ namespace EcommercePerfumes.Negocio
 		public static void EnviarCambioEstado(string destinatario, int numeroPedido, string estado, string seguimiento = null)
 		{
 			string asunto = $"Actualización de tu pedido #{numeroPedido}";
-			string cuerpo = $"<h3>¡Hola!</h3><p>Tu pedido <strong>#{numeroPedido}</strong> cambió de estado a: <strong>{estado}</strong>.</p>";
+			string cuerpo = $"<h3>¡Hola!</h3><p>Tu pedido con número <strong>{numeroPedido}</strong> se encuentra: <strong>{estado}</strong>.</p>";
 
 			if (estado == "Enviado" && !string.IsNullOrEmpty(seguimiento))
 			{
@@ -30,7 +30,7 @@ namespace EcommercePerfumes.Negocio
 		public static void EnviarConfirmacionPedido(string destinatario, int numeroPedido, string detallesPedidoHtml)
 		{
 			string asunto = $"Confirmación de pedido #{numeroPedido}";
-			string cuerpo = $"<h3>Gracias por tu compra</h3><p>Tu pedido <strong>#{numeroPedido}</strong> fue registrado correctamente.</p>";
+			string cuerpo = $"<h3>Gracias por tu compra</h3><p>Tu pedido con número <strong>{numeroPedido}</strong> fue registrado correctamente.</p>";
 			cuerpo += detallesPedidoHtml;
 			EnviarEmail(destinatario, asunto, cuerpo);
 		}

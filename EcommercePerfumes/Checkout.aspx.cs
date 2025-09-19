@@ -234,7 +234,7 @@ namespace EcommercePerfumes
 			sb.Append($"<p><strong>Envío:</strong> ${envio:N0}</p>");
 			sb.Append($"<p><strong>Total:</strong> ${total:N0}</p>");
 			sb.Append("<br/>");
-			sb.Append("<p>En breve recibirás otro correo cuando tu pedido cambie de estado.</p>");
+			sb.Append("<p>En breve recibirás otro correo informando la actualización de tu pedido.</p>");
 
 			return sb.ToString();
 		}
