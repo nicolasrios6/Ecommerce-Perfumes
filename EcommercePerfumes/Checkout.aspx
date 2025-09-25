@@ -12,7 +12,7 @@
                 <div class="col-7">
                     <!-- DATOS DE CONTACTO -->
                     <div class="card mb-4">
-                        <div class="card-header bg-primary text-white">Datos de contacto</div>
+                        <div class="card-header bg-dark text-white">Datos de contacto</div>
                         <div class="card-body">
                             <div class="mb-3">
                                 <label>Nombre</label>
@@ -45,7 +45,7 @@
 
                     <!-- OPCIONES DE ENVÍO -->
                     <div class="card mb-4">
-                        <div class="card-header bg-primary text-white">Método de envío</div>
+                        <div class="card-header bg-dark text-white">Método de envío</div>
                         <div class="card-body">
                             <asp:RadioButtonList ID="rblEnvio" runat="server" CssClass="form-check" RepeatDirection="Vertical" OnSelectedIndexChanged="rblEnvio_SelectedIndexChanged" AutoPostBack="true">
                                 <asp:ListItem Text="Envío a domicilio ($8000)" Value="Envio" />
@@ -56,7 +56,7 @@
 
                     <!-- MÉTODO DE PAGO -->
                     <div class="card mb-4">
-                        <div class="card-header bg-primary text-white">Método de pago</div>
+                        <div class="card-header bg-dark text-white">Método de pago</div>
                         <div class="card-body">
                             <asp:RadioButtonList ID="rblPago" runat="server" CssClass="form-check" RepeatDirection="Vertical" AutoPostBack="true" OnSelectedIndexChanged="rblPago_SelectedIndexChanged">
                                 <asp:ListItem Text="Transferencia bancaria" Value="Transferencia" />
@@ -73,7 +73,7 @@
 
                                 <div class="mb-3">
                                     <label>Adjuntar comprobante:</label>
-                                    <asp:FileUpload ID="fuComprobante" runat="server" CssClass="form-control" />
+                                    <asp:FileUpload ID="fuComprobante" runat="server" CssClass="form-control w-100" />
                                 </div>
                             </asp:Panel>
                         </div>
@@ -88,7 +88,7 @@
                 <%-- Resumen de pedido --%>
                 <div class="col-5">
                     <div class="card">
-                        <div class="card-header bg-secondary text-white">Resumen del pedido</div>
+                        <div class="card-header bg-dark text-white">Resumen del pedido</div>
                         <div class="card-body">
                             <asp:Repeater ID="repResumenCarrito" runat="server">
                                 <ItemTemplate>

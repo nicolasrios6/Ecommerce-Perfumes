@@ -135,6 +135,7 @@
     <Content Include="DetalleProducto.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Imagenes\logoEcommerce.jpg" />
     <Content Include="Imagenes\perf-hombre.jpg" />
     <Content Include="Imagenes\perf-mujer.jpg" />
     <Content Include="Imagenes\perf-unisex.jpg" />

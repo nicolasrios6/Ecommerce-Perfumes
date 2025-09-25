@@ -25,7 +25,7 @@
                 <label for="txtContrasenia" class="form-label">Contraseña</label>
                 <div class="d-flex">
                     <asp:TextBox ID="txtContrasenia" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                    <button type="button" class="btn" onclick="togglePassword()"><i class="fas fa-eye"></i></button>
+                    <button type="button" class="btn" onclick="togglePassword()"><i id="iconoPassword" class="fas fa-eye"></i></button>
                 </div>
             </div>
 
@@ -42,10 +42,15 @@
     <script>
         function togglePassword() {
             var input = document.getElementById("<%= txtContrasenia.ClientID %>");
+            var icono = document.getElementById("iconoPassword");
             if (input.type === "password") {
                 input.type = "text";
+                icono.classList.remove("fa-eye");
+                icono.classList.add("fa-eye-slash");
             } else {
                 input.type = "password";
+                icono.classList.remove("fa-eye-slash");
+                icono.classList.add("fa-eye");
             }
         }
     </script>

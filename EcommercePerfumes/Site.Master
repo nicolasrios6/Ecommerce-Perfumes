@@ -40,11 +40,13 @@
             </Scripts>
         </asp:ScriptManager>
 
-        <nav class="navbar navbar-expand-md navbar-toggleable-sm navbar-dark bg-dark fixed-top py-3">
+        <nav class="navbar navbar-expand-md navbar-toggleable-sm navbar-dark fixed-top py-0" style="background-color: #081420">
             <div class="container">
 
                 <!-- Logo -->
-                <a class="navbar-brand" runat="server" href="~/">Nombre de la aplicación</a>
+                <a class="navbar-brand" runat="server" href="~/">
+                    <img src="Imagenes/logoEcommerce.jpg" alt="Oasis Perfumes" style="width:100px" runat="server" />
+                </a>
 
                 <div class="d-flex align-items-center">
 
@@ -61,10 +63,10 @@
                 <!-- Collapse con links -->
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-md-0">
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Inicio</a></li>
+                        <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="Perfumes.aspx">Perfumes</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>
-                        <li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>
+                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>--%>
+                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>--%>
                         <li runat="server" id="liLogin" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Login">Login</a></li>
                         <li runat="server" id="liRegistro" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Registro">Registro</a></li>
                         <li runat="server" id="liMisPedidos" class="nav-item"><a class="nav-link text-white" runat="server" href="MisPedidos.aspx">Mis Pedidos</a></li>
@@ -92,12 +94,12 @@
             </div>
         </nav>
 
-        <div class="container body-content" style="margin-top: 80px">
+        <div class="container body-content" style="margin-top: 120px">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Oasis Perfumes</p>
             </footer>
         </div>
 
@@ -120,11 +122,11 @@
                                         <strong><%#Eval("Nombre") %></strong>
                                         <p class="mb-0">
                                             Cantidad: 
-                                            <asp:LinkButton ID="btnRestar" runat="server" CommandName="Restar" CommandArgument='<%#Eval("ProductoId") %>' CssClass="btn btn-sm btn-outline-secondary">-</asp:LinkButton>
+                                            <asp:LinkButton ID="btnRestar" runat="server" CommandName="Restar" CommandArgument='<%#Eval("ProductoId") %>' CssClass="btn btn-sm btn-outline-secondary px-2 py-0">-</asp:LinkButton>
                                             <%# Eval("Cantidad") %>
-                                            <asp:LinkButton ID="btnSumar" runat="server" CommandName="Sumar" CommandArgument='<%#Eval("ProductoId") %>' CssClass="btn btn-sm btn-outline-secondary">+</asp:LinkButton>
+                                            <asp:LinkButton ID="btnSumar" runat="server" CommandName="Sumar" CommandArgument='<%#Eval("ProductoId") %>' CssClass="btn btn-sm btn-outline-secondary px-2 py-0">+</asp:LinkButton>
                                         </p>
-                                        <p>Precio: $<%#string.Format("{0:N0}", Eval("Precio")) %></p>
+                                        <p class="fw-bold">Precio: $<%#string.Format("{0:N0}", Eval("Precio")) %></p>
                                         <asp:LinkButton ID="btnEliminar" runat="server" CommandName="Eliminar" CommandArgument='<%# Eval("ProductoId") %>' CssClass="btn btn-sm btn-danger mt-1">Eliminar</asp:LinkButton>
                                     </div>
                                 </div>
@@ -150,7 +152,7 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalLoginRequeridoLabel">Iniciar sesión</h5>
+                        <h5 class="modal-title" id="modalLoginRequeridoLabel">Inicia sesión</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body">

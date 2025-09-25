@@ -71,6 +71,27 @@ namespace EcommercePerfumes
 				return;
 			}
 
+			// ✅ VALIDACIÓN DE SELECCIONES
+			if (string.IsNullOrEmpty(rblEnvio.SelectedValue))
+			{
+				Page.Validators.Add(new CustomValidator
+				{
+					ErrorMessage = "Debes seleccionar un método de envío.",
+					IsValid = false
+				});
+				return;
+			}
+
+			if (string.IsNullOrEmpty(rblPago.SelectedValue))
+			{
+				Page.Validators.Add(new CustomValidator
+				{
+					ErrorMessage = "Debes seleccionar un método de pago.",
+					IsValid = false
+				});
+				return;
+			}
+
 			//Efectivo sólo si Retiro en local está seleccionado
 			if (rblPago.SelectedValue == "Efectivo" && rblEnvio.SelectedValue != "Retiro")
 			{

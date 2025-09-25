@@ -11,40 +11,57 @@
     </div>
 
     <div class="container my-5">
-    <h3 class="text-center mb-4">Explorá por Categoría</h3>
-    <div class="row g-3 text-center">
-        <div class="col-md-4">
-            <a href="Perfumes.aspx?genero=Hombre" class="text-decoration-none">
-                <div class="categoria-card">
-                    <img src="Imagenes/perf-hombre.jpg" alt="Hombres">
-                    <div class="overlay">
-                        <h5>Hombre</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="Perfumes.aspx?genero=Mujer" class="text-decoration-none">
-                <div class="categoria-card">
-                    <img src="Imagenes/perf-mujer.jpg" alt="Mujeres">
-                    <div class="overlay">
-                        <h5>Mujer</h5>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-4">
-            <a href="Perfumes.aspx?genero=Unisex" class="text-decoration-none">
-                <div class="categoria-card">
-                    <img src="Imagenes/perf-unisex.jpg" alt="Unisex">
-                    <div class="overlay">
-                        <h5>Unisex</h5>
-                    </div>
-                </div>
-            </a>
+        <div class="row text-center">
+            <div class="col-md-4">
+                <i class="fa fa-truck fs-1" style="color: #081420"></i>
+                <p>Envíos a todo el país</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-shield-halved fs-1" style="color: #081420"></i>
+                <p>Productos 100% originales</p>
+            </div>
+            <div class="col-md-4">
+                <i class="fa fa-percent fs-1" style="color: #081420"></i>
+                <p>10% de descuento pagando con transferencia</p>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="container my-5">
+        <h3 class="text-center mb-4">Explorá por Categoría</h3>
+        <div class="row g-3 text-center">
+            <div class="col-md-4">
+                <a href="Perfumes.aspx?genero=Hombre" class="text-decoration-none">
+                    <div class="categoria-card">
+                        <img src="Imagenes/perf-hombre.jpg" alt="Hombres">
+                        <div class="overlay">
+                            <h5>Hombre</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="Perfumes.aspx?genero=Mujer" class="text-decoration-none">
+                    <div class="categoria-card">
+                        <img src="Imagenes/perf-mujer.jpg" alt="Mujeres">
+                        <div class="overlay">
+                            <h5>Mujer</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-4">
+                <a href="Perfumes.aspx?genero=Unisex" class="text-decoration-none">
+                    <div class="categoria-card">
+                        <img src="Imagenes/perf-unisex.jpg" alt="Unisex">
+                        <div class="overlay">
+                            <h5>Unisex</h5>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <div class="container my-5">
         <h3 class="text-center mb-4">Productos Destacados</h3>
@@ -75,23 +92,37 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
+    <hr />
+    <footer class="container my-5">
+        <div class="container py-4">
+            <div class="text-center mb-3">
+                <h2 class="mb-3">Oasis Pefumes</h2>
+                <p>
+                    Tu tienda de perfumes de confianza. Ofrecemos productos originales y envíos a todo el país.
+                </p>
+            </div>
+            <div class="d-flex flex-column align-items-center">
 
 
-    <div class="container my-5">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <i class="fa fa-truck fs-1" style="color: #fbfb9a"></i>
-                <p>Envíos a todo el país</p>
+                <div class="col-md-4 mb-3 text-center">
+                    <h6 class="text-uppercase fw-bold">Contacto</h6>
+                    <p class=" mb-1"><i class="bi bi-envelope-fill me-2"></i>info@oasisperfumes.com</p>
+                    <p class=" mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Malabia 130</p>
+                </div>
+
+                <div class="col-md-4 mb-3 text-center">
+                    <h6 class="text-uppercase fw-bold">Seguinos</h6>
+                    <%--<a href="#" class=" me-3"><i class="fa-brands fa-facebook text-dark fs-4"></i></a>--%>
+                    <a href="https://www.instagram.com/oasisperfumesmza/" target="_blank" class="me-3"><i class="fa-brands fa-instagram text-dark fs-4"></i></a>
+                    <a href="https://wa.me/5492614711573" class="" target="_blank"><i class="fa-brands fa-whatsapp text-dark fs-4"></i></a>
+                </div>
             </div>
-            <div class="col-md-4">
-                <i class="fa fa-shield-halved fs-1" style="color: #fbfb9a"></i>
-                <p>Productos 100% originales</p>
-            </div>
-            <div class="col-md-4">
-                <i class="fa fa-percent fs-1" style="color: #fbfb9a"></i>
-                <p>10% de descuento pagando con transferencia</p>
-            </div>
+
+            <%--<div class="text-center mt-3">
+                <small>&copy; <%: DateTime.Now.Year %> Oasis Perfumes - Todos los derechos reservados.</small>
+            </div>--%>
         </div>
-    </div>
+    </footer>
+
 
 </asp:Content>

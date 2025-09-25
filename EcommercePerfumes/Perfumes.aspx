@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <main class="container">
-        <h2>Lista de Perfumes</h2>
+        <h2 class="mb-3">Nuestros Perfumes</h2>
 
         <div class="row">
             <div class="col-3">

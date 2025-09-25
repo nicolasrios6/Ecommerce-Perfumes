@@ -36,6 +36,7 @@
                 </p>
 
                 <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" Enabled="true" OnClick="btnAgregarCarrito_Click" />
+                <a href="Perfumes.aspx" class="btn btn-secondary">Volver</a>
             </div>
         </div>
 
