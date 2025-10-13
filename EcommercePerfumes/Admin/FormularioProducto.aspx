@@ -1,10 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioProducto.aspx.cs" Inherits="EcommercePerfumes.Admin.FormularioProducto" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Formulario Producto</h2>
+    <h2 class="ps-3">Formulario Producto</h2>
 
-    <div class="row">
-        <div class="col-6">
+    <asp:Label ID="lblError" runat="server" CssClass="alert alert-danger w-50 d-block" EnableViewState="false" />
+
+    <div class="row p-3">
+        <div class="col-12 col-md-6">
             <div class="form-group mb-3">
                 <label class="form-label" for="txtNombre">Nombre</label>
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
@@ -46,10 +48,10 @@
                 <asp:CheckBox ID="chkActivo" runat="server" Checked="true" Text="Activo" />
             </div>
 
-            <asp:Label ID="lblError" runat="server" CssClass="text-danger" EnableViewState="false" />
 
-            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
-            <a href="Productos.aspx" class="btn btn-secondary">Cancelar</a>
+            <%--<asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
+            <a href="Productos.aspx" class="btn btn-secondary">Cancelar</a>--%>
+            <%--<asp:Label ID="lblError" runat="server" CssClass="text-danger" EnableViewState="false" />--%>
         </div>
         <div class="col-6">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -61,6 +63,10 @@
                     <asp:Image ID="imgProducto" runat="server" ImageUrl="https://grupoact.com.ar/wp-content/uploads/2020/04/placeholder.png" Width="60%" />
                 </ContentTemplate>
             </asp:UpdatePanel>
+        </div>
+        <div class="mt-3">
+            <asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
+            <a href="Productos.aspx" class="btn btn-secondary">Cancelar</a>
         </div>
     </div>
 </asp:Content>

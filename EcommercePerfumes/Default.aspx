@@ -2,11 +2,12 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="container my-4">
+    <%--<div class="container container-sm-fluid my-4 p-sm-0">--%>
+    <div class="container-fluid my-4 px-0">
         <a href="Perfumes.aspx">
             <img src="https://perfumeriasublime.com/cdn/shop/collections/Banners_colecciones_Sublime_1800x600_px_13_2048x.png?v=1747933226"
-                class="img-fluid w-100 rounded shadow-sm"
-                alt="Perfumes destacados" />
+                class="img-fluid w-100 rounded shadow-sm "
+                alt="Perfumes" />
         </a>
     </div>
 
@@ -14,15 +15,15 @@
         <div class="row text-center">
             <div class="col-md-4">
                 <i class="fa fa-truck fs-1" style="color: #081420"></i>
-                <p>Envíos a todo el país</p>
+                <p>Envíos rápidos y seguros</p>
             </div>
             <div class="col-md-4">
                 <i class="fa fa-shield-halved fs-1" style="color: #081420"></i>
                 <p>Productos 100% originales</p>
             </div>
             <div class="col-md-4">
-                <i class="fa fa-percent fs-1" style="color: #081420"></i>
-                <p>10% de descuento pagando con transferencia</p>
+                <i class="fa fa-hand-holding-dollar fs-1" style="color: #081420"></i>
+                <p>Los mejores precios del mercado</p>
             </div>
         </div>
     </div>
@@ -65,13 +66,13 @@
 
     <div class="container my-5">
         <h3 class="text-center mb-4">Productos Destacados</h3>
-        <asp:UpdatePanel runat="server">
+        <asp:UpdatePanel runat="server" ID="upDestacados">
             <ContentTemplate>
-                <div class="row">
+                <div class="row ">
                     <asp:Repeater ID="repDestacados" runat="server" OnItemCommand="repDestacados_ItemCommand">
                         <ItemTemplate>
-                            <div class="col-md-3 mb-4">
-                                <div class="card d-flex flex-column text-dark" style="width: 18rem;">
+                            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+                                <div class="card d-flex flex-column text-dark w-100 h-100" >
                                     <img src='<%#Eval("ImagenUrl") %>' class="card-img-top m-auto w-50" alt="...">
                                     <div class="card-body d-flex flex-column text-center">
                                         <h5 class="card-title"><%#Eval("Nombre") %></h5>
@@ -92,37 +93,7 @@
             </ContentTemplate>
         </asp:UpdatePanel>
     </div>
-    <hr />
-    <footer class="container my-5">
-        <div class="container py-4">
-            <div class="text-center mb-3">
-                <h2 class="mb-3">Oasis Pefumes</h2>
-                <p>
-                    Tu tienda de perfumes de confianza. Ofrecemos productos originales y envíos a todo el país.
-                </p>
-            </div>
-            <div class="d-flex flex-column align-items-center">
-
-
-                <div class="col-md-4 mb-3 text-center">
-                    <h6 class="text-uppercase fw-bold">Contacto</h6>
-                    <p class=" mb-1"><i class="bi bi-envelope-fill me-2"></i>info@oasisperfumes.com</p>
-                    <p class=" mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Malabia 130</p>
-                </div>
-
-                <div class="col-md-4 mb-3 text-center">
-                    <h6 class="text-uppercase fw-bold">Seguinos</h6>
-                    <%--<a href="#" class=" me-3"><i class="fa-brands fa-facebook text-dark fs-4"></i></a>--%>
-                    <a href="https://www.instagram.com/oasisperfumesmza/" target="_blank" class="me-3"><i class="fa-brands fa-instagram text-dark fs-4"></i></a>
-                    <a href="https://wa.me/5492614711573" class="" target="_blank"><i class="fa-brands fa-whatsapp text-dark fs-4"></i></a>
-                </div>
-            </div>
-
-            <%--<div class="text-center mt-3">
-                <small>&copy; <%: DateTime.Now.Year %> Oasis Perfumes - Todos los derechos reservados.</small>
-            </div>--%>
-        </div>
-    </footer>
+    
 
 
 </asp:Content>

@@ -5,31 +5,41 @@
         <h2 class="mb-3">Nuestros Perfumes</h2>
 
         <div class="row">
-            <div class="col-3">
-                <div class="sticky-top" style="top: 80px">
+            <div class=" col-12 col-md-3 mb-3">
+                <div class="sticky-top" style="top: 110px">
                     <h5>Filtros</h5>
-
                     <!-- Marca -->
-                    <h6 class="mt-3">Marca</h6>
-                    <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged"></asp:DropDownList>
+                    <div class="row">
+                        <div class="col-12 p-md-0">
 
-                    <!-- Género -->
-                    <h6 class="mt-3">Género</h6>
-                    <asp:RadioButtonList ID="rblGenero" runat="server" CssClass="list-group" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged">
-                        <asp:ListItem Text="Todos" Value="" Selected="True" />
-                        <asp:ListItem Text="Hombre" Value="Hombre"></asp:ListItem>
-                        <asp:ListItem Text="Mujer" Value="Mujer"></asp:ListItem>
-                        <asp:ListItem Text="Unisex" Value="Unisex"></asp:ListItem>
-                    </asp:RadioButtonList>
+                            <h6 class="mt-3">Marca</h6>
+                            <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged"></asp:DropDownList>
+                        </div>
 
-                    <!-- Rango de precios -->
-                    <h6 class="mt-3">Precio</h6>
-                    <asp:RadioButtonList ID="rblPrecio" runat="server" CssClass="list-group" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged">
-                        <asp:ListItem Text="Todos" Value="" Selected="True"></asp:ListItem>
-                        <asp:ListItem Text="Menos de $60.000" Value="1"></asp:ListItem>
-                        <asp:ListItem Text="$60.000 - $100.000" Value="2"></asp:ListItem>
-                        <asp:ListItem Text="Más de $100.000" Value="3"></asp:ListItem>
-                    </asp:RadioButtonList>
+                        <!-- Género -->
+                        <div class="col-6 col-md-12 p-md-0">
+
+                            <h6 class="mt-3">Género</h6>
+                            <asp:RadioButtonList ID="rblGenero" runat="server" CssClass="list-group" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged">
+                                <asp:ListItem Text="Todos" Value="" Selected="True" />
+                                <asp:ListItem Text="Hombre" Value="Hombre"></asp:ListItem>
+                                <asp:ListItem Text="Mujer" Value="Mujer"></asp:ListItem>
+                                <asp:ListItem Text="Unisex" Value="Unisex"></asp:ListItem>
+                            </asp:RadioButtonList>
+                        </div>
+                        <!-- Rango de precios -->
+                        <div class="col-6 col-md-12 p-0">
+
+                            <h6 class="mt-3">Precio</h6>
+                            <asp:RadioButtonList ID="rblPrecio" runat="server" CssClass="list-group" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged">
+                                <asp:ListItem Text="Todos" Value="" Selected="True"></asp:ListItem>
+                                <asp:ListItem Text="Menos de $60.000" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="$60.000 - $100.000" Value="2"></asp:ListItem>
+                                <asp:ListItem Text="Más de $100.000" Value="3"></asp:ListItem>
+                            </asp:RadioButtonList>
+                        </div>
+                    </div>
+
 
                     <asp:Button ID="btnLimpiarFiltros" Text="Limpiar filtros" runat="server"
                         CssClass="btn btn-warning mt-3 " OnClick="btnLimpiarFiltros_Click" />
@@ -37,10 +47,10 @@
 
             </div>
 
-            <div class="col-9">
-                <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+            <div class="col-12 col-md-9">
+                <asp:UpdatePanel ID="upCard" runat="server" UpdateMode="Conditional">
                     <ContentTemplate>
-                        <div class="row gap-4">
+                        <div class="row gap-4 justify-content-center justify-content-sm-start ">
                             <asp:Repeater runat="server" ID="repPerfumes" OnItemCommand="repPerfumes_ItemCommand">
                                 <ItemTemplate>
                                     <div class="card d-flex flex-column text-dark" style="width: 18rem;">
@@ -53,7 +63,6 @@
                                                 <div class="d-flex justify-content-between">
                                                     <asp:Button ID="btnAgregarCarrito" Text="Agregar al carrito" runat="server" CommandName="Agregar"
                                                         CommandArgument='<%#Eval("Id") %>' CssClass="btn btn-sm btn-outline-primary" />
-                                                    <%--<a href="#" class="btn btn-sm btn-outline-primary">Agregar al carrito</a>--%>
                                                     <a href="DetalleProducto.aspx?id=<%#Eval("Id") %>" class="btn btn-sm btn-light">Ver detalle</a>
                                                 </div>
                                             </div>
@@ -61,6 +70,7 @@
                                     </div>
                                 </ItemTemplate>
                             </asp:Repeater>
+                        </div>
                     </ContentTemplate>
                 </asp:UpdatePanel>
             </div>

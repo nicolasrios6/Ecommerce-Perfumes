@@ -21,7 +21,7 @@
 </head>
 <body>
     <form runat="server" enctype="multipart/form-data">
-        <asp:ScriptManager runat="server">
+        <asp:ScriptManager runat="server" ID="ScriptManager1">
             <Scripts>
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
@@ -45,7 +45,7 @@
 
                 <!-- Logo -->
                 <a class="navbar-brand" runat="server" href="~/">
-                    <img src="Imagenes/logoEcommerce.jpg" alt="Oasis Perfumes" style="width:100px" runat="server" />
+                    <img src="Imagenes/logoEcommerce.jpg" alt="Oasis Perfumes" style="width: 100px" runat="server" />
                 </a>
 
                 <div class="d-flex align-items-center">
@@ -94,11 +94,37 @@
             </div>
         </nav>
 
-        <div class="container body-content" style="margin-top: 120px">
+        <div class="container body-xl-content container-sm p-sm-0 px-1" style="margin-top: 120px">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
-            <footer>
+            <footer class="container my-5">
+                <div class="container py-4 pb-0">
+                    <div class="text-center mb-3">
+                        <h2 class="mb-3">Oasis Pefumes</h2>
+                        <p>
+                            Tu tienda de perfumes de confianza
+                        </p>
+                    </div>
+                    <div class="d-flex flex-column align-items-center">
+
+
+                        <div class="col-md-4 mb-3 text-center">
+                            <h6 class="text-uppercase fw-bold">Contacto</h6>
+                            <p class=" mb-1"><i class="bi bi-envelope-fill me-2"></i>info@oasisperfumes.com</p>
+                            <p class=" mb-1"><i class="bi bi-geo-alt-fill me-2"></i>Malabia 130, Carrodilla, Luján de Cuyo</p>
+                        </div>
+
+                        <div class="col-md-4 mb-3 text-center">
+                            <h6 class="text-uppercase fw-bold">Seguinos</h6>
+                            <a href="https://www.instagram.com/oasisperfumesmza/" target="_blank" class="me-3"><i class="fa-brands fa-instagram text-dark fs-4"></i></a>
+                            <a href="#" class=""><i class="fa-brands fa-whatsapp text-dark fs-4"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <hr />
+            <footer class="text-center">
                 <p>&copy; <%: DateTime.Now.Year %> - Oasis Perfumes</p>
             </footer>
         </div>

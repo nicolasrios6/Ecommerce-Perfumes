@@ -3,7 +3,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Checkout</h2>
 
-    <asp:UpdatePanel runat="server">
+    <asp:UpdatePanel runat="server" ID="upCheckout">
         <ContentTemplate>
             <asp:ValidationSummary ID="valSummary" runat="server" CssClass="alert alert-danger"
                 DisplayMode="BulletList" ShowSummary="true" />

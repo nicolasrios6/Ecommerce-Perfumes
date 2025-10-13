@@ -17,6 +17,7 @@ namespace EcommercePerfumes.Admin
 			Seguridad.VerificarAdmin(this);
 			if(!IsPostBack)
 			{
+				lblError.Visible = false;
 				CargarMarcas();
 
 				if (Request.QueryString["id"] != null)
@@ -72,8 +73,38 @@ namespace EcommercePerfumes.Admin
         {
 			try
 			{
-				if (string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(txtPrecio.Text))
+				
+
+				// Validación de campos obligatorios
+				if (string.IsNullOrWhiteSpace(txtNombre.Text) ||
+					string.IsNullOrWhiteSpace(txtDescripcion.Text) ||
+					string.IsNullOrWhiteSpace(txtPrecio.Text) ||
+					string.IsNullOrWhiteSpace(txtStock.Text) ||
+					string.IsNullOrWhiteSpace(txtGenero.Text) ||
+					string.IsNullOrWhiteSpace(txtConcentracion.Text) ||
+					string.IsNullOrWhiteSpace(txtMililitros.Text))
 				{
+					lblError.Text = "⚠️ Debes completar todos los campos antes de guardar el producto.";
+					lblError.Visible = true;
+					return;
+				}
+
+				// Validación de datos numéricos
+				if (!decimal.TryParse(txtPrecio.Text, out decimal precio))
+				{
+					lblError.Text = "⚠️ El precio debe ser un número válido.";
+					return;
+				}
+
+				if (!int.TryParse(txtStock.Text, out int stock))
+				{
+					lblError.Text = "⚠️ El stock debe ser un número entero.";
+					return;
+				}
+
+				if (!int.TryParse(txtMililitros.Text, out int ml))
+				{
+					lblError.Text = "⚠️ Los mililitros deben ser un número entero.";
 					return;
 				}
 

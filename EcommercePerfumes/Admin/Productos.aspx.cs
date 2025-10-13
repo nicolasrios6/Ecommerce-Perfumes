@@ -27,8 +27,10 @@ namespace EcommercePerfumes.Admin
 		{
 			ProductoNegocio negocio = new ProductoNegocio();
 			Session.Add("listaProductos", negocio.ObtenerTodos());
-			gvProductos.DataSource = Session["listaProductos"];
-			gvProductos.DataBind();
+			repProductosCards.DataSource = Session["listaProductos"];
+			repProductosCards.DataBind();
+			//gvProductos.DataSource = Session["listaProductos"];
+			//gvProductos.DataBind();
 		}
 
 		private void CargarMarcas()
@@ -42,11 +44,11 @@ namespace EcommercePerfumes.Admin
 			ddlMarcas.Items.Insert(0, new ListItem("Todas", "0"));
 		}
 
-		protected void gvProductos_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			int idSeleccionado = Convert.ToInt32(gvProductos.SelectedDataKey.Value);
-			Response.Redirect($"FormularioProducto.aspx?id={idSeleccionado}");
-		}
+		//protected void gvProductos_SelectedIndexChanged(object sender, EventArgs e)
+		//{
+		//	int idSeleccionado = Convert.ToInt32(gvProductos.SelectedDataKey.Value);
+		//	Response.Redirect($"FormularioProducto.aspx?id={idSeleccionado}");
+		//}
 
 		protected void filtrosChanged(object sender, EventArgs e)
 		{
@@ -57,6 +59,12 @@ namespace EcommercePerfumes.Admin
 		{
 			ProductoNegocio negocio = new ProductoNegocio();
 			List<Producto> lista = negocio.ObtenerTodos();
+
+			List<Producto> listaFiltrada = lista.FindAll(x => x.Nombre.ToUpper().Contains(txtNombreFiltro.Text.ToUpper()));
+			if (!string.IsNullOrWhiteSpace(txtNombreFiltro.Text))
+			{
+				lista = lista.Where(x => x.Nombre.ToUpper().Contains(txtNombreFiltro.Text.ToUpper())).ToList();	
+			}
 
 			if (ddlMarcas.SelectedValue != "" && ddlMarcas.SelectedValue != "0")
 			{
@@ -70,14 +78,16 @@ namespace EcommercePerfumes.Admin
 				lista = lista.Where(p => p.Genero == genero).ToList();
 			}
 
-			gvProductos.DataSource = lista;
-			gvProductos.DataBind();
+			//gvProductos.DataSource = lista;
+			//gvProductos.DataBind();
+			repProductosCards.DataSource = lista;
+			repProductosCards.DataBind();
 		}
 
 		protected void btnResetFiltros_Click(object sender, EventArgs e)
 		{
 			// 1.Resetear los valores de los filtros
-
+			txtNombreFiltro.Text = "";
 			ddlMarcas.SelectedIndex = 0;  // Selecciona la primera opción (debería ser "Todas")
 			rblGenero.ClearSelection();
 			rblGenero.Items[0].Selected = true; // Marca "Todos"
@@ -88,8 +98,10 @@ namespace EcommercePerfumes.Admin
 
 			// 3. Guardar en sesión y enlazar al GridView
 			Session["listaProductos"] = listaCompleta;
-			gvProductos.DataSource = listaCompleta;
-			gvProductos.DataBind();
+			//gvProductos.DataSource = listaCompleta;
+			//gvProductos.DataBind();
+			repProductosCards.DataSource = listaCompleta;
+			repProductosCards.DataBind();
 		}
 	}
 }

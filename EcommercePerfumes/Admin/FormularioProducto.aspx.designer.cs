@@ -15,6 +15,15 @@ namespace EcommercePerfumes.Admin
 	{
 
 		/// <summary>
+		/// Control lblError.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Label lblError;
+
+		/// <summary>
 		/// Control txtNombre.
 		/// </summary>
 		/// <remarks>
@@ -114,24 +123,6 @@ namespace EcommercePerfumes.Admin
 		protected global::System.Web.UI.WebControls.CheckBox chkActivo;
 
 		/// <summary>
-		/// Control lblError.
-		/// </summary>
-		/// <remarks>
-		/// Campo generado automáticamente.
-		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Label lblError;
-
-		/// <summary>
-		/// Control btnGuardar.
-		/// </summary>
-		/// <remarks>
-		/// Campo generado automáticamente.
-		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-		/// </remarks>
-		protected global::System.Web.UI.WebControls.Button btnGuardar;
-
-		/// <summary>
 		/// Control UpdatePanel1.
 		/// </summary>
 		/// <remarks>
@@ -157,5 +148,14 @@ namespace EcommercePerfumes.Admin
 		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
 		/// </remarks>
 		protected global::System.Web.UI.WebControls.Image imgProducto;
+
+		/// <summary>
+		/// Control btnGuardar.
+		/// </summary>
+		/// <remarks>
+		/// Campo generado automáticamente.
+		/// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+		/// </remarks>
+		protected global::System.Web.UI.WebControls.Button btnGuardar;
 	}
 }

@@ -8,6 +8,10 @@
     </div>
     <div class="container-fluid p-0">
         <div class="row align-items-end mb-3 p-3 border rounded bg-light mx-0">
+            <div>
+                <label for="" class="form-label">Buscar por nombre</label>
+                <asp:TextBox runat="server" ID="txtNombreFiltro" CssClass="form-control" AutoPostBack="true" OnTextChanged="filtrosChanged" />
+            </div>
             <div class="col-md-3">
                 <label for="ddlMarcas" class="form-label">Marca</label>
                 <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="form-select" AutoPostBack="true"
@@ -28,25 +32,49 @@
             </div>
 
             <div class="col-md-3 text-md-end">
-                <asp:Button ID="btnResetFiltros" runat="server" CssClass="btn btn-outline-secondary"
+                <asp:Button ID="btnResetFiltros" runat="server" CssClass="btn btn-secondary"
                     Text="Quitar filtros" OnClick="btnResetFiltros_Click" />
             </div>
         </div>
 
-        <asp:GridView ID="gvProductos" runat="server" CssClass="table table-bordered" AutoGenerateColumns="false" DataKeyNames="Id" OnSelectedIndexChanged="gvProductos_SelectedIndexChanged">
-            <Columns>
-                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-                <asp:BoundField HeaderText="Descripcion" DataField="Descripcion" />
-                <asp:BoundField HeaderText="Precio" DataField="Precio" DataFormatString="${0:N0}" />
-                <asp:BoundField HeaderText="Stock" DataField="Stock" />
-                <asp:BoundField HeaderText="Marca" DataField="Marca.Nombre" />
-                <asp:BoundField HeaderText="Genero" DataField="Genero" />
-                <asp:BoundField HeaderText="Concentracion" DataField="Concentracion" />
-                <asp:BoundField HeaderText="Mililitros" DataField="Mililitros" />
-                <asp:BoundField HeaderText="Notas" DataField="Notas" />
-                <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
-                <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Modificar" />
-            </Columns>
-        </asp:GridView>
+        <asp:Repeater runat="server" ID="repProductosCards">
+            <HeaderTemplate>
+                <div class="row g-3 justify-content-start">
+            </HeaderTemplate>
+            <ItemTemplate>
+                <div class="col-12 col-sm-6 col-lg-4 d-flex justify-content-center" >
+                    <div class="card shadow-sm w-75 h-100 mb-3">
+                        <div class="card-body d-flex flex-column text-center">
+
+                            <!-- Imagen -->
+                            <asp:Image ImageUrl='<%# Eval("ImagenUrl") %>' runat="server"
+                                CssClass="img-fluid mb-3 mx-auto"
+                                Style="max-height: 120px; object-fit: contain;" />
+
+                            <!-- Nombre -->
+                            <h5 class="card-title mb-1"><%# Eval("Nombre") %></h5>
+
+                            <!-- Marca y Género -->
+                            <p class="text-muted mb-1">
+                                <%# Eval("Marca.Nombre") %> - <%# Eval("Genero") %>
+                            </p>
+
+                            <!-- Stock -->
+                            <span class="badge bg-<%# (Convert.ToInt32(Eval("Stock")) > 0 ? "success" : "danger") %> mb-2 d-inline-block align-self-center">Stock: <%# Eval("Stock") %>
+                            </span>
+
+                            <!-- Precio -->
+                            <p class="fw-bold mb-3">$<%# string.Format("{0:N0}", Eval("Precio")) %></p>
+
+                            <!-- Botón Modificar -->
+                            <a href='<%# "FormularioProducto.aspx?id=" + Eval("Id") %>'
+                                class="btn btn-primary btn-sm w-auto mx-auto mt-auto">Modificar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
     </div>
+
 </asp:Content>

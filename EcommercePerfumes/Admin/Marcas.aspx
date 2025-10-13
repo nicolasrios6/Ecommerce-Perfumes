@@ -1,15 +1,37 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Marcas.aspx.cs" Inherits="EcommercePerfumes.Admin.Marcas" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Gestión de Marcas</h2>
-    <div class="mb-3">
+    <h2 class="text-center text-md-start">Gestión de Marcas</h2>
+    <div class="mb-3 text-center text-md-start">
         <a href="FormularioMarca.aspx" class="btn btn-primary">Agregar Marca</a>
         <a href="Dashboard.aspx" class="btn btn-secondary">Volver</a>
     </div>
-    <asp:GridView ID="gvMarcas" CssClass="table" AutoGenerateColumns="false" DataKeyNames="Id" runat="server" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged">
+    <div class="row">
+
+    <asp:Repeater runat="server" ID="repMarcas">
+        <ItemTemplate>
+            <div class="col-12 col-md-4 g-3 d-flex justify-content-center">
+
+            <div class="card w-75">
+                <div class="card-body text-center">
+                    <h5 class="card-title"><%#Eval("Nombre") %></h5>
+                    <p class="card-text"
+                        style='<%# (bool)Eval("Activo") ? "color:green;": "color:red;" %>'>
+                        <%# (bool)Eval("Activo") ? "Activa" : "Inactiva" %>
+                    </p>
+                    <a href='<%#"FormularioMarca.aspx?id=" + Eval("Id") %>' class="btn btn-primary">Modificar</a>
+                </div>
+            </div>
+            </div>
+        </ItemTemplate>
+    </asp:Repeater>
+    </div>
+
+    <%--<asp:GridView ID="gvMarcas" CssClass="table" AutoGenerateColumns="false" DataKeyNames="Id" runat="server" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged">
         <Columns>
             <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-            <asp:CheckBoxField HeaderText="Activo" DataField="Activo"/>
-            <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Modificar"/>
+            <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
+            <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Modificar" />
         </Columns>
-    </asp:GridView>
+    </asp:GridView>--%>
 </asp:Content>

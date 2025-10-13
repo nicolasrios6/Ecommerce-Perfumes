@@ -25,6 +25,8 @@ namespace EcommercePerfumes.Admin
 			UsuarioNegocio negocio = new UsuarioNegocio();
 			gvUsuarios.DataSource = negocio.ObtenerClientes();
 			gvUsuarios.DataBind();
+			repUsuarios.DataSource = negocio.ObtenerClientes();
+			repUsuarios.DataBind();
 		}
 
         protected void gvUsuarios_RowCommand(object sender, GridViewCommandEventArgs e)

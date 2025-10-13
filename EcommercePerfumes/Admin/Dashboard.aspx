@@ -9,7 +9,7 @@
 
     <h2 class="mb-4">Panel de Administración</h2>
 
-    <div class="row text-center mb-4">
+    <div class="row text-center mb-4 d-md-flex d-none">
         <div class="col-md-3">
             <div class="bg-light p-3 rounded shadow-sm">
                 <h4 id="cantidadProductos" runat="server"></h4>

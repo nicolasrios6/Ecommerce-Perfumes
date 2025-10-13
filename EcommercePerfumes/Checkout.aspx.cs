@@ -59,7 +59,6 @@ namespace EcommercePerfumes
 			Usuario usuario = Session["Usuario"] as Usuario;
 			if (usuario == null)
 			{
-				// Redirigir o mostrar error
 				Response.Redirect("~/Login.aspx");
 				return;
 			}
@@ -71,7 +70,6 @@ namespace EcommercePerfumes
 				return;
 			}
 
-			// ✅ VALIDACIÓN DE SELECCIONES
 			if (string.IsNullOrEmpty(rblEnvio.SelectedValue))
 			{
 				Page.Validators.Add(new CustomValidator

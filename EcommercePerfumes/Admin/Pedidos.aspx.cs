@@ -18,6 +18,8 @@ namespace EcommercePerfumes.Admin
 			{
 				PedidoNegocio negocio = new PedidoNegocio();
 				Session.Add("listaPedidos", negocio.ObtenerTodos());
+				repPedidos.DataSource = Session["listaPedidos"];
+				repPedidos.DataBind();
 				gvPedidos.DataSource = Session["listaPedidos"];
 				gvPedidos.DataBind();
 			}
@@ -93,6 +95,8 @@ namespace EcommercePerfumes.Admin
 				(string.IsNullOrEmpty(estadoSeleccionado) || p.Estado.Equals(estadoSeleccionado, StringComparison.OrdinalIgnoreCase))
 			).ToList();
 
+			repPedidos.DataSource = filtrados;
+			repPedidos.DataBind();
 			gvPedidos.DataSource = filtrados;
 			gvPedidos.DataBind();
 		}
@@ -103,8 +107,54 @@ namespace EcommercePerfumes.Admin
 			txtFechaHasta.Text = string.Empty;
 			ddlEstado.SelectedIndex = 0;
 
+			repPedidos.DataSource = Session["listaPedidos"];
+			repPedidos.DataBind();
 			gvPedidos.DataSource = Session["listaPedidos"];
 			gvPedidos.DataBind();
+		}
+
+		protected void repPedidos_ItemDataBound(object sender, RepeaterItemEventArgs e)
+		{
+			if (e.Item.ItemType != ListItemType.Item && e.Item.ItemType != ListItemType.AlternatingItem)
+				return;
+
+			var lblEstado = (Label)e.Item.FindControl("lblEstado");
+			if (lblEstado == null) return;
+
+			string estadoRaw = lblEstado.Text ?? "";
+			string estado = estadoRaw.Trim().ToLowerInvariant();
+
+			string css = "badge ";
+
+			switch (estado)
+			{
+				case "pendiente":
+					css += "text-bg-warning";
+					lblEstado.Text = "Pendiente";
+					break;
+				case "procesando":
+					css += "text-bg-info";
+					lblEstado.Text = "Procesando";
+					break;
+				case "enviado":
+					css += "text-bg-primary";
+					lblEstado.Text = "Enviado";
+					break;
+				case "cancelado":
+					css += "text-bg-danger";
+					lblEstado.Text = "Cancelado";
+					break;
+				case "entregado":
+					css += "text-bg-success";
+					lblEstado.Text = "Entregado";
+					break;
+				default:
+					css += "text-bg-secondary";
+					lblEstado.Text = estadoRaw; // mantiene el texto original
+					break;
+			}
+
+			lblEstado.CssClass = css;
 		}
 	}
 }

@@ -1,34 +1,52 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" Inherits="EcommercePerfumes.Admin.Usuarios" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Gestión de Usuarios</h2>
+    <h2 class="ps-2">Gestión de Usuarios</h2>
     <div class="mb-3">
-        <a href="#" class="btn btn-primary">Agregar Usuario</a>
-        <a href="Dashboard.aspx" class="btn btn-secondary">Volver</a>
+
+        <a href="Dashboard.aspx" class="btn btn-secondary ms-2">Volver</a>
     </div>
 
-    <asp:GridView runat="server" ID="gvUsuarios" AutoGenerateColumns="false" DataKeyNames="Id" CssClass="table" OnRowCommand="gvUsuarios_RowCommand">
-        <Columns>
-            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-            <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
-            <asp:BoundField HeaderText="Email" DataField="Email" />
-            <asp:BoundField HeaderText="Teléfono" DataField="Telefono" />
-            <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
-            <asp:TemplateField HeaderText="Acción">
-                <ItemTemplate>
-                    <%--<asp:LinkButton ID="btnToggleActivo" runat="server" CommandName="ToggleActivo"
-                        OnClientClick="return confirm('¿Estás seguro de cambiar el estado del usuario?');"
-                        CommandArgument='<%#Eval("Id") %>' Text='<%#(bool)Eval("Activo") ? "Inactivar" : "Activar" %>'
-                        CssClass="btn btn-sm btn-warning">
-                    </asp:LinkButton>--%>
-                    <asp:LinkButton ID="btnMostrarModal" runat="server" CssClass="btn btn-sm btn-warning"
-                        OnClientClick='<%# string.Format("mostrarModalConfirmacion({0}, \"{1}\", \"{2}\", {3}); return false;",
-                            Eval("Id"), Eval("Nombre"), Eval("Apellido"), Eval("Activo").ToString().ToLower()) %>'
-                        Text='<%# (bool)Eval("Activo") ? "Inactivar" : "Activar" %>'>
-                    </asp:LinkButton>
-                </ItemTemplate>
-            </asp:TemplateField>
-        </Columns>
-    </asp:GridView>
+    <div class="d-none d-md-block">
+        <asp:GridView runat="server" ID="gvUsuarios" AutoGenerateColumns="false" DataKeyNames="Id" CssClass="table" OnRowCommand="gvUsuarios_RowCommand">
+            <Columns>
+                <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
+                <asp:BoundField HeaderText="Apellido" DataField="Apellido" />
+                <asp:BoundField HeaderText="Email" DataField="Email" />
+                <asp:BoundField HeaderText="Teléfono" DataField="Telefono" />
+                <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
+                <asp:TemplateField HeaderText="Acción">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="btnMostrarModal" runat="server" CssClass="btn btn-sm btn-warning"
+                            OnClientClick='<%# string.Format("mostrarModalConfirmacion({0}, \"{1}\", \"{2}\", {3}); return false;",
+                                Eval("Id"), Eval("Nombre"), Eval("Apellido"), Eval("Activo").ToString().ToLower()) %>'
+                            Text='<%# (bool)Eval("Activo") ? "Inactivar" : "Activar" %>'>
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:TemplateField>
+            </Columns>
+        </asp:GridView>
+    </div>
+
+    <div class="d-md-none">
+        <asp:Repeater runat="server" ID="repUsuarios">
+            <ItemTemplate>
+                <div class="card mb-2">
+                    <div class="card-body text-start d-flex flex-column">
+                        <p class="fw-semibold m-0"><%#Eval("Nombre")%> <%#Eval("Apellido") %></p>
+                        <p class="m-0"><%#Eval("Email") %></p>
+                        <p class="m-0"><%#Eval("Telefono") %></p>
+                        <p class="m-0"><%# (bool)Eval("Activo") == false ? "Inactivo" : "Activo" %></p>
+                        <asp:LinkButton ID="btnMostrarModal" runat="server" CssClass="btn btn-sm btn-warning w-50"
+                            OnClientClick='<%# string.Format("mostrarModalConfirmacion({0}, \"{1}\", \"{2}\", {3}); return false;",
+                                Eval("Id"), Eval("Nombre"), Eval("Apellido"), Eval("Activo").ToString().ToLower()) %>'
+                            Text='<%# (bool)Eval("Activo") ? "Inactivar" : "Activar" %>'>
+                        </asp:LinkButton>
+                    </div>
+                </div>
+            </ItemTemplate>
+        </asp:Repeater>
+    </div>
 
     <asp:HiddenField ID="hdnIdUsuario" runat="server" />
     <div class="modal fade" id="modalConfirmacion" tabindex="-1" aria-labelledby="modalConfirmacionLabel" aria-hidden="true">

@@ -41,6 +41,8 @@ namespace EcommercePerfumes.Admin
 
 			ddlEstado.SelectedValue = pedido.Estado;
 
+			repDetalles.DataSource = pedido.Detalles;
+			repDetalles.DataBind();
 			gvDetalles.DataSource = pedido.Detalles;
 			gvDetalles.DataBind();
 

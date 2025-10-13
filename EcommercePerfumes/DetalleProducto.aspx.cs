@@ -117,6 +117,7 @@ namespace EcommercePerfumes
 					Nombre = producto.Nombre,
 					ImagenUrl = producto.ImagenUrl,
 					Precio = producto.Precio,
+					StockDisponible = producto.Stock,
 					Cantidad = 1
 				});
 			}

@@ -17,15 +17,17 @@ namespace EcommercePerfumes.Admin
 			{
 				MarcaNegocio negocio = new MarcaNegocio();
 				Session.Add("listaMarcas", negocio.ObtenerTodas());
-				gvMarcas.DataSource = Session["listaMarcas"];
-				gvMarcas.DataBind();
+				repMarcas.DataSource = Session["listaMarcas"];
+				repMarcas.DataBind();
+				//gvMarcas.DataSource = Session["listaMarcas"];
+				//gvMarcas.DataBind();
 			}
 		}
 
-        protected void gvMarcas_SelectedIndexChanged(object sender, EventArgs e)
-        {
-			int idSeleccionado = Convert.ToInt32(gvMarcas.SelectedDataKey.Value);
-			Response.Redirect($"FormularioMarca.aspx?id={idSeleccionado}");
-        }
+   //     protected void gvMarcas_SelectedIndexChanged(object sender, EventArgs e)
+   //     {
+			//int idSeleccionado = Convert.ToInt32(gvMarcas.SelectedDataKey.Value);
+			//Response.Redirect($"FormularioMarca.aspx?id={idSeleccionado}");
+   //     }
     }
 }

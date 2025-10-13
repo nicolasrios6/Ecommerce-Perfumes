@@ -20,10 +20,10 @@
                     -
                     <asp:Label ID="lblConcentracion" runat="server" />
                 </p>
-                <p class="text-muted">
+                <p class="">
                     <asp:Label ID="lblDescripcion" runat="server" />
                 </p>
-                <p class="text-muted">
+                <p class="">
                     <asp:Label ID="lblNotas" runat="server" />
                 </p>
                 <h4 class="text-primary">$<asp:Label ID="lblPrecio" runat="server" /></h4>
@@ -34,9 +34,14 @@
                     <strong>Stock disponible:</strong>
                     <asp:Label ID="lblStock" runat="server" />
                 </p>
-
-                <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" Enabled="true" OnClick="btnAgregarCarrito_Click" />
-                <a href="Perfumes.aspx" class="btn btn-secondary">Volver</a>
+                <div class="d-flex gap-2">
+                    <asp:UpdatePanel runat="server">
+                        <ContentTemplate>
+                            <asp:Button ID="btnAgregarCarrito" runat="server" Text="Agregar al carrito" CssClass="btn btn-primary" Enabled="true" OnClick="btnAgregarCarrito_Click" />
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    <a href="Perfumes.aspx" class="btn btn-secondary">Volver</a>
+                </div>
             </div>
         </div>
 
@@ -44,7 +49,7 @@
         <hr class="my-5" />
         <h3>Productos relacionados</h3>
 
-        <asp:UpdatePanel runat="server" UpdateMode="Conditional">
+        <asp:UpdatePanel runat="server" UpdateMode="Conditional" ID="upRelacionados">
             <ContentTemplate>
 
                 <div class="d-flex flex-row overflow-auto gap-3 pb-3">

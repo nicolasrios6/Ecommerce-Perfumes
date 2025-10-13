@@ -54,6 +54,16 @@ namespace EcommercePerfumes.Admin
 				Activo = chkActivo.Checked,
 			};
 
+			List<Marca> marcas = marcaNegocio.ObtenerTodas();
+			int? marcaIdEnEdicion = Session["MarcaId"] != null ? (int?)Session["MarcaId"] : null;
+			if (marcas.Any(m =>
+					m.Nombre.Equals(nombre, StringComparison.OrdinalIgnoreCase) &&
+					(!marcaIdEnEdicion.HasValue || m.Id != marcaIdEnEdicion.Value)))
+			{
+				lblError.Text = "La marca ingresada ya existe";
+				return;
+			}
+
 			try
 			{
 				if (Session["MarcaId"] != null)
