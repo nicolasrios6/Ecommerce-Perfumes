@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioMarca.aspx.cs" Inherits="EcommercePerfumes.Admin.FormularioMarca" %>
+﻿<%@ Page Title="Formulario de Marca" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="FormularioMarca.aspx.cs" Inherits="EcommercePerfumes.Admin.FormularioMarca" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2 class="ps-3">Formulario Marca</h2>
 

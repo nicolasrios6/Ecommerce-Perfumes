@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetallePedidoCliente.aspx.cs" Inherits="EcommercePerfumes.DetallePedidoCliente" %>
+﻿<%@ Page Title="Detalle Pedido" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="DetallePedidoCliente.aspx.cs" Inherits="EcommercePerfumes.DetallePedidoCliente" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Pedido N°
