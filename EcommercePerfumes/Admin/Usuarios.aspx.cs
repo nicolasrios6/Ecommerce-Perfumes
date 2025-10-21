@@ -41,7 +41,6 @@ namespace EcommercePerfumes.Admin
 				{
 					bool nuevoEstado = !usuario.Activo;
 					negocio.ActualizarEstado(idUsuario, nuevoEstado);
-					//CargarUsuarios();
 					Response.Redirect(Request.RawUrl, false);
 					Context.ApplicationInstance.CompleteRequest();
 				}

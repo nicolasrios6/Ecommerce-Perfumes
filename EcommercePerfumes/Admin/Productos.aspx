@@ -46,27 +46,21 @@
                     <div class="card shadow-sm w-75 h-100 mb-3">
                         <div class="card-body d-flex flex-column text-center">
 
-                            <!-- Imagen -->
                             <asp:Image ImageUrl='<%# Eval("ImagenUrl") %>' runat="server"
                                 CssClass="img-fluid mb-3 mx-auto"
                                 Style="max-height: 120px; object-fit: contain;" />
 
-                            <!-- Nombre -->
                             <h5 class="card-title mb-1"><%# Eval("Nombre") %></h5>
 
-                            <!-- Marca y Género -->
                             <p class="text-muted mb-1">
                                 <%# Eval("Marca.Nombre") %> - <%# Eval("Genero") %>
                             </p>
 
-                            <!-- Stock -->
                             <span class="badge bg-<%# (Convert.ToInt32(Eval("Stock")) > 0 ? "success" : "danger") %> mb-2 d-inline-block align-self-center">Stock: <%# Eval("Stock") %>
                             </span>
 
-                            <!-- Precio -->
                             <p class="fw-bold mb-3">$<%# string.Format("{0:N0}", Eval("Precio")) %></p>
 
-                            <!-- Botón Modificar -->
                             <a href='<%# "FormularioProducto.aspx?id=" + Eval("Id") %>'
                                 class="btn btn-primary btn-sm w-auto mx-auto mt-auto">Modificar
                             </a>

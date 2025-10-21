@@ -27,11 +27,4 @@
     </asp:Repeater>
     </div>
 
-    <%--<asp:GridView ID="gvMarcas" CssClass="table" AutoGenerateColumns="false" DataKeyNames="Id" runat="server" OnSelectedIndexChanged="gvMarcas_SelectedIndexChanged">
-        <Columns>
-            <asp:BoundField HeaderText="Nombre" DataField="Nombre" />
-            <asp:CheckBoxField HeaderText="Activo" DataField="Activo" />
-            <asp:CommandField HeaderText="Acción" ShowSelectButton="true" SelectText="Modificar" />
-        </Columns>
-    </asp:GridView>--%>
 </asp:Content>

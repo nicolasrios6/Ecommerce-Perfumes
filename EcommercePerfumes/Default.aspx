@@ -2,7 +2,6 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <%--<div class="container container-sm-fluid my-4 p-sm-0">--%>
     <div class="container-fluid my-4 px-0">
         <a href="Perfumes.aspx">
             <img src="https://perfumeriasublime.com/cdn/shop/collections/Banners_colecciones_Sublime_1800x600_px_13_2048x.png?v=1747933226"

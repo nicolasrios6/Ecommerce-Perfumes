@@ -22,7 +22,7 @@ namespace EcommercePerfumes
 		private void CargarDestacados()
 		{
 			ProductoNegocio negocio = new ProductoNegocio();
-			var productos = negocio.ObtenerDestacados(4); // Muestra 4 productos
+			var productos = negocio.ObtenerDestacados(4); 
 
 			repDestacados.DataSource = productos;
 			repDestacados.DataBind();

@@ -8,7 +8,6 @@
             <div class=" col-12 col-md-3 mb-3">
                 <div class="sticky-top" style="top: 110px">
                     <h5>Filtros</h5>
-                    <!-- Marca -->
                     <div class="row">
                         <div class="col-12 p-md-0">
 
@@ -16,7 +15,6 @@
                             <asp:DropDownList ID="ddlMarcas" runat="server" CssClass="form-select" AutoPostBack="true" OnSelectedIndexChanged="filtrosChanged"></asp:DropDownList>
                         </div>
 
-                        <!-- Género -->
                         <div class="col-6 col-md-12 p-md-0">
 
                             <h6 class="mt-3">Género</h6>
@@ -27,7 +25,6 @@
                                 <asp:ListItem Text="Unisex" Value="Unisex"></asp:ListItem>
                             </asp:RadioButtonList>
                         </div>
-                        <!-- Rango de precios -->
                         <div class="col-6 col-md-12 p-0">
 
                             <h6 class="mt-3">Precio</h6>

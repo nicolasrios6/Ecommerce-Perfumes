@@ -19,12 +19,10 @@ namespace EcommercePerfumes
 				CargarMarcas();
 				CargarProductos();
 
-				// ✅ Detectar si viene con querystring "genero"
 				if (Request.QueryString["genero"] != null)
 				{
 					string genero = Request.QueryString["genero"];
 
-					// Marcar el RadioButtonList en base al género recibido
 					if (rblGenero.Items.FindByValue(genero) != null)
 					{
 						rblGenero.ClearSelection();
@@ -32,7 +30,7 @@ namespace EcommercePerfumes
 					}
 				}
 
-				AplicarFiltros(); // ✅ Aplica los filtros con el género ya seleccionado
+				AplicarFiltros(); 
 			}
 		}
 
@@ -78,18 +76,17 @@ namespace EcommercePerfumes
 				lista = lista.Where(p => p.Genero == genero).ToList();
 			}
 
-			// Filtro por Rango de Precios
 			if (!string.IsNullOrEmpty(rblPrecio.SelectedValue))
 			{
 				switch (rblPrecio.SelectedValue)
 				{
-					case "1": // Menos de 10k
+					case "1": 
 						lista = lista.Where(p => p.Precio < 60000).ToList();
 						break;
-					case "2": // 10k - 20k
+					case "2": 
 						lista = lista.Where(p => p.Precio >= 60000 && p.Precio <= 100000).ToList();
 						break;
-					case "3": // Más de 20k
+					case "3": 
 						lista = lista.Where(p => p.Precio > 100000).ToList();
 						break;
 				}

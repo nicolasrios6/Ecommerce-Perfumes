@@ -66,7 +66,6 @@ namespace EcommercePerfumes
 			List<ItemCarrito> carrito = Session["Carrito"] as List<ItemCarrito>;
 			if (carrito == null || !carrito.Any())
 			{
-				// Mostrar mensaje de carrito vacío
 				return;
 			}
 
@@ -90,7 +89,6 @@ namespace EcommercePerfumes
 				return;
 			}
 
-			//Efectivo sólo si Retiro en local está seleccionado
 			if (rblPago.SelectedValue == "Efectivo" && rblEnvio.SelectedValue != "Retiro")
 			{
 				Page.Validators.Add(new CustomValidator
@@ -109,7 +107,6 @@ namespace EcommercePerfumes
 				lblError.CssClass = "text-danger";
 				return;
 			}
-				// Si hay comprobante, validamos extensión y tamaño (ejemplo: máximo 5MB)
 				string comprobanteRutaRelativa = null;
 			string comprobanteNombreFisico = null;
 
@@ -147,7 +144,6 @@ namespace EcommercePerfumes
 				{
 					lblError.Text = "No se pudo guardar el comprobante. Intentá nuevamente.";
 					lblError.CssClass = "text-danger";
-					// loggear ex
 					return;
 				}
 			}
@@ -179,7 +175,6 @@ namespace EcommercePerfumes
 				}).ToList()
 			};
 
-			// Guardar en la base
 			PedidoNegocio negocio= new PedidoNegocio();
 			try
 			{
@@ -193,15 +188,12 @@ namespace EcommercePerfumes
 				string htmlDetalle = GenerarHtmlDetalle(carrito, subtotal, envio, total);
 				EmailService.EnviarConfirmacionPedido(usuario.Email, pedido.Id, htmlDetalle);
 
-				// Limpiar carrito
 				Session["Carrito"] = null;
 
-				// Redirigir a confirmación
 				Response.Redirect("~/Confirmacion.aspx", false);
 			}
 			catch (Exception ex)
 			{
-				// Si falló la inserción y ya guardamos un comprobante en disco, borrarlo para evitar archivos huérfanos
 				if (!string.IsNullOrEmpty(comprobanteNombreFisico))
 				{
 					try
@@ -214,7 +206,6 @@ namespace EcommercePerfumes
 						throw new Exception();
 					}
 				}
-				// Mostrar error
 				lblError.Text = "Hubo un error al procesar el pedido.";
 			}
 		}

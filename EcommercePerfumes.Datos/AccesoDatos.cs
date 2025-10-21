@@ -4,6 +4,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Configuration;
 
 namespace EcommercePerfumes.Datos
 {
@@ -17,7 +18,7 @@ namespace EcommercePerfumes.Datos
 
 		public AccesoDatos()
 		{
-			conexion = new SqlConnection("server =.\\SQLEXPRESS; database = EcommercePerfumes_DB; integrated security = true");
+			conexion = new SqlConnection(ConfigurationManager.AppSettings["cadenaConexion"]);
 			comando = new SqlCommand();
 		}
 
@@ -33,7 +34,6 @@ namespace EcommercePerfumes.Datos
 			comando.CommandText = procedimiento;
 		}
 
-		// Para consulta SELECT
 		public void ejecutarLectura()
 		{
 			comando.Connection = conexion;
@@ -48,7 +48,6 @@ namespace EcommercePerfumes.Datos
 			}
 		}
 
-		// Para consultas INSERT, UPDATE o DELETE
 		public void ejecutarAccion()
 		{
 			comando.Connection = conexion;

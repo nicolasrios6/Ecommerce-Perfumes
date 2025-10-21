@@ -43,30 +43,24 @@
         <nav class="navbar navbar-expand-md navbar-toggleable-sm navbar-dark fixed-top py-0" style="background-color: #081420">
             <div class="container">
 
-                <!-- Logo -->
                 <a class="navbar-brand" runat="server" href="~/">
                     <img src="Imagenes/logoEcommerce.jpg" alt="Oasis Perfumes" style="width: 100px" runat="server" />
                 </a>
 
                 <div class="d-flex align-items-center">
 
-                    <!-- Botón hamburguesa -->
                     <button type="button" class="navbar-toggler me-2" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Alternar navegación" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <!-- Carrito (MOBILE: visible junto al logo, DESKTOP: oculto porque se muestra dentro del menú) -->
                     <a class="nav-link text-white d-md-none me-2 position-relative" data-bs-toggle="offcanvas" data-bs-target="#offcanvasCarrito" role="button" aria-controls="offcanvasCarrito">
                         <i class="fas fa-shopping-cart"></i>
                     </a>
                 </div>
-                <!-- Collapse con links -->
                 <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                     <ul class="navbar-nav mb-2 mb-md-0">
                         <li class="nav-item"><a class="nav-link" runat="server" href="~/">Home</a></li>
                         <li class="nav-item"><a class="nav-link" runat="server" href="Perfumes.aspx">Perfumes</a></li>
-                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/About">Acerca de</a></li>--%>
-                        <%--<li class="nav-item"><a class="nav-link" runat="server" href="~/Contact">Contacto</a></li>--%>
                         <li runat="server" id="liLogin" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Login">Login</a></li>
                         <li runat="server" id="liRegistro" class="nav-item"><a class="nav-link text-white" runat="server" href="~/Registro">Registro</a></li>
                         <li runat="server" id="liMisPedidos" class="nav-item"><a class="nav-link text-white" runat="server" href="MisPedidos.aspx">Mis Pedidos</a></li>
@@ -75,7 +69,6 @@
                             <asp:LinkButton ID="btnLogout" runat="server" CssClass="nav-link text-white" OnClick="btnLogout_Click" Text="Cerrar sesión" />
                         </li>
 
-                        <!-- Carrito (DESKTOP: visible al final de los links, MOBILE: oculto porque se muestra arriba) -->
                         <asp:UpdatePanel ID="upCarrito" runat="server" UpdateMode="Conditional">
                             <ContentTemplate>
                                 <li class="nav-item position-relative d-none d-md-block">
@@ -173,7 +166,6 @@
                 </asp:UpdatePanel>
             </div>
         </div>
-        <!-- Modal: Iniciar sesión para finalizar compra -->
         <div class="modal fade" id="modalLoginRequerido" tabindex="-1" aria-labelledby="modalLoginRequeridoLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -202,10 +194,9 @@
             if (!usuarioLogueado) {
                 var modal = new bootstrap.Modal(document.getElementById('modalLoginRequerido'));
                 modal.show();
-                return false; // Evita que el botón ejecute postback
+                return false;
             }
 
-            // Si está logueado, redireccionar al checkout (opcionalmente por JS)
             window.location.href = 'Checkout.aspx';
             return false;
         }

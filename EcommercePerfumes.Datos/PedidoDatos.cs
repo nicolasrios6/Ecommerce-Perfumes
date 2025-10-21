@@ -84,7 +84,6 @@ namespace EcommercePerfumes.Datos
 					if (datos.Lector["NombreUsuario"] != DBNull.Value)
 						pedido.NombreUsuario = datos.Lector["NombreUsuario"].ToString();
 
-					// Segundo resultado: Detalles del pedido
 					if (pedido != null && datos.Lector.NextResult())
 					{
 						while (datos.Lector.Read())

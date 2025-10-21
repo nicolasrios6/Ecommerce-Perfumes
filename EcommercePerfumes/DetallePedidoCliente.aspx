@@ -59,7 +59,6 @@
             </Columns>
         </asp:GridView>
 
-        <!-- Totales -->
         <div class="mt-3">
             <strong>Subtotal:</strong>
             <asp:Label ID="lblSubtotal" runat="server" />

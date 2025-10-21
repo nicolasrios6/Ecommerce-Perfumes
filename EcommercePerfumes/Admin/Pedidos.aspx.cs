@@ -38,29 +38,27 @@ namespace EcommercePerfumes.Admin
 			var lblEstado = (Label)e.Row.FindControl("lblEstado");
 			if (lblEstado == null) return;
 
-			// Normalizamos para que el switch no falle por espacios o mayúsculas
 			var estadoRaw = lblEstado.Text ?? "";
 			var estado = estadoRaw.Trim().ToLowerInvariant();
 
-			// Si usás Bootstrap 5.3+, conviene text-bg-* (sino, podés dejar bg-* + text-*)
 			string css = "badge ";
 
 			switch (estado)
 			{
 				case "pendiente":
-					css += "text-bg-warning";        // o "bg-warning text-dark"
+					css += "text-bg-warning";        
 					lblEstado.Text = "Pendiente";
 					break;
 				case "procesando":
-					css += "text-bg-info";           // o "bg-info text-dark"
+					css += "text-bg-info";          
 					lblEstado.Text = "Procesando";
 					break;
 				case "enviado":
-					css += "text-bg-primary";        // o "bg-success"
+					css += "text-bg-primary";       
 					lblEstado.Text = "Enviado";
 					break;
 				case "cancelado":
-					css += "text-bg-danger";         // o "bg-danger"
+					css += "text-bg-danger";         
 					lblEstado.Text = "Cancelado";
 					break;
 				case "entregado":
@@ -68,7 +66,7 @@ namespace EcommercePerfumes.Admin
 					lblEstado.Text = "Entregado";
 					break;
 				default:
-					css += "text-bg-secondary";      // valor por defecto
+					css += "text-bg-secondary";      
 					break;
 			}
 
@@ -79,14 +77,12 @@ namespace EcommercePerfumes.Admin
 		{
 			List<Pedido> pedidos = Session["listaPedidos"] as List<Pedido> ?? new List<Pedido>();
 
-			// Filtro por fecha
 			DateTime? fechaDesde = string.IsNullOrEmpty(txtFechaDesde.Text) ? (DateTime?)null : DateTime.Parse(txtFechaDesde.Text);
 			DateTime? fechaHasta = string.IsNullOrEmpty(txtFechaHasta.Text) ? (DateTime?)null : DateTime.Parse(txtFechaHasta.Text);
 
 			if (fechaHasta.HasValue)
-				fechaHasta = fechaHasta.Value.Date.AddDays(1).AddTicks(-1); // incluye todo el día
+				fechaHasta = fechaHasta.Value.Date.AddDays(1).AddTicks(-1); 
 
-			// Filtro por estado
 			string estadoSeleccionado = ddlEstado.SelectedValue;
 
 			var filtrados = pedidos.Where(p =>
@@ -150,7 +146,7 @@ namespace EcommercePerfumes.Admin
 					break;
 				default:
 					css += "text-bg-secondary";
-					lblEstado.Text = estadoRaw; // mantiene el texto original
+					lblEstado.Text = estadoRaw; 
 					break;
 			}
 

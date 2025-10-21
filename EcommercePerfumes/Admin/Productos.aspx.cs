@@ -29,8 +29,6 @@ namespace EcommercePerfumes.Admin
 			Session.Add("listaProductos", negocio.ObtenerTodos());
 			repProductosCards.DataSource = Session["listaProductos"];
 			repProductosCards.DataBind();
-			//gvProductos.DataSource = Session["listaProductos"];
-			//gvProductos.DataBind();
 		}
 
 		private void CargarMarcas()
@@ -43,12 +41,6 @@ namespace EcommercePerfumes.Admin
 
 			ddlMarcas.Items.Insert(0, new ListItem("Todas", "0"));
 		}
-
-		//protected void gvProductos_SelectedIndexChanged(object sender, EventArgs e)
-		//{
-		//	int idSeleccionado = Convert.ToInt32(gvProductos.SelectedDataKey.Value);
-		//	Response.Redirect($"FormularioProducto.aspx?id={idSeleccionado}");
-		//}
 
 		protected void filtrosChanged(object sender, EventArgs e)
 		{
@@ -78,28 +70,21 @@ namespace EcommercePerfumes.Admin
 				lista = lista.Where(p => p.Genero == genero).ToList();
 			}
 
-			//gvProductos.DataSource = lista;
-			//gvProductos.DataBind();
 			repProductosCards.DataSource = lista;
 			repProductosCards.DataBind();
 		}
 
 		protected void btnResetFiltros_Click(object sender, EventArgs e)
 		{
-			// 1.Resetear los valores de los filtros
 			txtNombreFiltro.Text = "";
-			ddlMarcas.SelectedIndex = 0;  // Selecciona la primera opción (debería ser "Todas")
+			ddlMarcas.SelectedIndex = 0;  
 			rblGenero.ClearSelection();
-			rblGenero.Items[0].Selected = true; // Marca "Todos"
+			rblGenero.Items[0].Selected = true; 
 
-			// 2. Volver a cargar la lista completa de productos
 			ProductoNegocio negocio = new ProductoNegocio();
 			var listaCompleta = negocio.ObtenerTodos();
 
-			// 3. Guardar en sesión y enlazar al GridView
 			Session["listaProductos"] = listaCompleta;
-			//gvProductos.DataSource = listaCompleta;
-			//gvProductos.DataBind();
 			repProductosCards.DataSource = listaCompleta;
 			repProductosCards.DataBind();
 		}

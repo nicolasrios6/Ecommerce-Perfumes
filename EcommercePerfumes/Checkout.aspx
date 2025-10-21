@@ -8,9 +8,7 @@
             <asp:ValidationSummary ID="valSummary" runat="server" CssClass="alert alert-danger"
                 DisplayMode="BulletList" ShowSummary="true" />
             <div class="row">
-                <%-- Formulario de datos --%>
                 <div class="col-7">
-                    <!-- DATOS DE CONTACTO -->
                     <div class="card mb-4">
                         <div class="card-header bg-dark text-white">Datos de contacto</div>
                         <div class="card-body">
@@ -43,7 +41,6 @@
                         </div>
                     </div>
 
-                    <!-- OPCIONES DE ENVÍO -->
                     <div class="card mb-4">
                         <div class="card-header bg-dark text-white">Método de envío</div>
                         <div class="card-body">
@@ -54,7 +51,6 @@
                         </div>
                     </div>
 
-                    <!-- MÉTODO DE PAGO -->
                     <div class="card mb-4">
                         <div class="card-header bg-dark text-white">Método de pago</div>
                         <div class="card-body">
@@ -68,7 +64,6 @@
                                     <p><strong>ALIAS: </strong>NICOLASRIOS.NX</p>
                                     <p><strong>CBU: </strong>123123123123123</p>
                                     <p><strong>Cuenta: </strong>Nicolas Rios - Naranja X</p>
-                                    <%--<p>Luego de realizar la transferencia, confirmá la compra con el botón de abajo y envianos el comprobante al siguiente número: <strong>2616295808</strong> indicandonos tu nombre y apellido.</p>--%>
                                 </div>
 
                                 <div class="mb-3">
@@ -79,13 +74,11 @@
                         </div>
                     </div>
 
-                    <!-- BOTÓN CONFIRMAR -->
                     <asp:Button ID="btnConfirmarCompra" runat="server" Text="Confirmar compra"
                         CssClass="btn btn-success btn-lg w-100 mb-4" OnClick="btnConfirmarCompra_Click" />
                     <asp:Label ID="lblError" runat="server"></asp:Label>
                 </div>
 
-                <%-- Resumen de pedido --%>
                 <div class="col-5">
                     <div class="card">
                         <div class="card-header bg-dark text-white">Resumen del pedido</div>

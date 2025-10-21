@@ -41,29 +41,27 @@ namespace EcommercePerfumes
 			var lblEstado = (Label)e.Row.FindControl("lblEstado");
 			if (lblEstado == null) return;
 
-			// Normalizamos para que el switch no falle por espacios o mayúsculas
 			var estadoRaw = lblEstado.Text ?? "";
 			var estado = estadoRaw.Trim().ToLowerInvariant();
 
-			// Si usás Bootstrap 5.3+, conviene text-bg-* (sino, podés dejar bg-* + text-*)
 			string css = "badge ";
 
 			switch (estado)
 			{
 				case "pendiente":
-					css += "text-bg-warning";        // o "bg-warning text-dark"
+					css += "text-bg-warning";        
 					lblEstado.Text = "Pendiente";
 					break;
 				case "procesando":
-					css += "text-bg-info";           // o "bg-info text-dark"
+					css += "text-bg-info";           
 					lblEstado.Text = "Procesando";
 					break;
 				case "enviado":
-					css += "text-bg-primary";        // o "bg-success"
+					css += "text-bg-primary";       
 					lblEstado.Text = "Enviado";
 					break;
 				case "cancelado":
-					css += "text-bg-danger";         // o "bg-danger"
+					css += "text-bg-danger";        
 					lblEstado.Text = "Cancelado";
 					break;
 				case "entregado":
@@ -71,7 +69,7 @@ namespace EcommercePerfumes
 					lblEstado.Text = "Entregado";
 					break;
 				default:
-					css += "text-bg-secondary";      // valor por defecto
+					css += "text-bg-secondary";     
 					break;
 			}
 

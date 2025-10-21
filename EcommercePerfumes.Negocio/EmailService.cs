@@ -47,8 +47,6 @@ namespace EcommercePerfumes.Negocio
 
 				using (SmtpClient smtp = new SmtpClient())
 				{
-					//smtp.Credentials = new NetworkCredential(smtpUser, smtpPass);
-					//smtp.EnableSsl = true;
 					smtp.Send(mail);
 				}
 			}

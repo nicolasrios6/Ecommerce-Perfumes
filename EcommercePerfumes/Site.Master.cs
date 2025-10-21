@@ -133,12 +133,10 @@ namespace EcommercePerfumes
 			{
 				var itemCarrito = (ItemCarrito)e.Item.DataItem;
 
-				// Buscar el botón sumar
 				LinkButton btnSumar = (LinkButton)e.Item.FindControl("btnSumar");
 
 				if (btnSumar != null)
 				{
-					// Si la cantidad en el carrito ya es igual al stock disponible -> deshabilitar
 					if (itemCarrito.Cantidad >= itemCarrito.StockDisponible)
 					{
 						btnSumar.Enabled = false;

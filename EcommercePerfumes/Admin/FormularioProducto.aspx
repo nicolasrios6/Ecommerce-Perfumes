@@ -48,10 +48,6 @@
                 <asp:CheckBox ID="chkActivo" runat="server" Checked="true" Text="Activo" />
             </div>
 
-
-            <%--<asp:Button ID="btnGuardar" runat="server" Text="Guardar" CssClass="btn btn-primary" OnClick="btnGuardar_Click" />
-            <a href="Productos.aspx" class="btn btn-secondary">Cancelar</a>--%>
-            <%--<asp:Label ID="lblError" runat="server" CssClass="text-danger" EnableViewState="false" />--%>
         </div>
         <div class="col-6">
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">

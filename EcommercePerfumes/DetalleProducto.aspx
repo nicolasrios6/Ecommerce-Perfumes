@@ -45,7 +45,6 @@
             </div>
         </div>
 
-        <!-- Productos relacionados -->
         <hr class="my-5" />
         <h3>Productos relacionados</h3>
 

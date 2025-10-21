@@ -42,7 +42,6 @@ namespace EcommercePerfumes
 			gvDetalles.DataSource = pedido.Detalles;
 			gvDetalles.DataBind();
 
-			// *** Comprobante ***
 			if (!string.IsNullOrEmpty(pedido.ComprobanteUrl))
 			{
 				pnlComprobante.Visible = true;

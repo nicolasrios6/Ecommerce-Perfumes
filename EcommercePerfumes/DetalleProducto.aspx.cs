@@ -71,10 +71,8 @@ namespace EcommercePerfumes
 		{
 			ProductoNegocio negocio = new ProductoNegocio();
 
-			// Trae el producto actual
 			Producto actual = negocio.ObtenerPorId(idProducto);
 
-			// Ejemplo: relacionados por misma marca (excluyendo el actual)
 			List<Producto> relacionados = negocio.ObtenerActivos()
 												 .Where(p => p.Genero == actual.Genero && p.Id != actual.Id)
 												 .Take(5)
@@ -103,11 +101,10 @@ namespace EcommercePerfumes
 			ItemCarrito existente = carrito.Find(x => x.ProductoId == producto.Id);
 			if (existente != null)
 			{
-				// Controlamos que no supere el stock
 				if (existente.Cantidad < producto.Stock)
 					existente.Cantidad++;
 				else
-					existente.Cantidad = producto.Stock; // tope en stock
+					existente.Cantidad = producto.Stock; 
 			}
 			else
 			{

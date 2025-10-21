@@ -19,15 +19,8 @@ namespace EcommercePerfumes.Admin
 				Session.Add("listaMarcas", negocio.ObtenerTodas());
 				repMarcas.DataSource = Session["listaMarcas"];
 				repMarcas.DataBind();
-				//gvMarcas.DataSource = Session["listaMarcas"];
-				//gvMarcas.DataBind();
+				
 			}
 		}
-
-   //     protected void gvMarcas_SelectedIndexChanged(object sender, EventArgs e)
-   //     {
-			//int idSeleccionado = Convert.ToInt32(gvMarcas.SelectedDataKey.Value);
-			//Response.Redirect($"FormularioMarca.aspx?id={idSeleccionado}");
-   //     }
     }
 }
