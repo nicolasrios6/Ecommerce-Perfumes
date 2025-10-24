@@ -8,7 +8,7 @@
             <asp:ValidationSummary ID="valSummary" runat="server" CssClass="alert alert-danger"
                 DisplayMode="BulletList" ShowSummary="true" />
             <div class="row">
-                <div class="col-7">
+                <div class="col-12 col-md-7">
                     <div class="card mb-4">
                         <div class="card-header bg-dark text-white">Datos de contacto</div>
                         <div class="card-body">
@@ -54,7 +54,8 @@
                     <div class="card mb-4">
                         <div class="card-header bg-dark text-white">Método de pago</div>
                         <div class="card-body">
-                            <asp:RadioButtonList ID="rblPago" runat="server" CssClass="form-check" RepeatDirection="Vertical" AutoPostBack="true" OnSelectedIndexChanged="rblPago_SelectedIndexChanged">
+                            <%--OnSelectedIndexChanged="rblPago_SelectedIndexChanged"--%>
+                            <asp:RadioButtonList ID="rblPago" runat="server" CssClass="form-check" RepeatDirection="Vertical"  >
                                 <asp:ListItem Text="Transferencia bancaria" Value="Transferencia" />
                                 <asp:ListItem Text="Efectivo" Value="Efectivo" />
                             </asp:RadioButtonList>
@@ -69,17 +70,16 @@
                                 <div class="mb-3">
                                     <label>Adjuntar comprobante:</label>
                                     <asp:FileUpload ID="fuComprobante" runat="server" CssClass="form-control w-100" />
+                                    <small id="nombreArchivo" class="text-success d-block mt-1"></small>
                                 </div>
                             </asp:Panel>
                         </div>
                     </div>
 
-                    <asp:Button ID="btnConfirmarCompra" runat="server" Text="Confirmar compra"
-                        CssClass="btn btn-success btn-lg w-100 mb-4" OnClick="btnConfirmarCompra_Click" />
-                    <asp:Label ID="lblError" runat="server"></asp:Label>
+
                 </div>
 
-                <div class="col-5">
+                <div class="col-12 col-md-5">
                     <div class="card">
                         <div class="card-header bg-dark text-white">Resumen del pedido</div>
                         <div class="card-body">
@@ -111,6 +111,12 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="text-center text-md-start mt-3">
+                    <asp:Button ID="btnConfirmarCompra" runat="server" Text="Confirmar compra"
+                        CssClass="btn btn-success btn-lg w-100 mb-4" OnClick="btnConfirmarCompra_Click" />
+                    <asp:Label ID="lblError" runat="server"></asp:Label>
+                </div>
             </div>
 
         </ContentTemplate>
@@ -118,4 +124,35 @@
             <asp:PostBackTrigger ControlID="btnConfirmarCompra" />
         </Triggers>
     </asp:UpdatePanel>
+
+    <script type="text/javascript">
+
+            document.addEventListener("change", function (e) {
+                if (e.target.id === "<%= rblPago.ClientID %>_0" || e.target.id === "<%= rblPago.ClientID %>_1") {
+                    const panel = document.getElementById("<%= Panel1.ClientID %>");
+                    panel.style.display = e.target.value === "Transferencia" ? "block" : "none";
+                }
+            });
+
+        function configurarFileUpload() {
+            const fileInput = document.getElementById("<%= fuComprobante.ClientID %>");
+            const fileNameLabel = document.getElementById("nombreArchivo");
+
+            if (fileInput && fileNameLabel) {
+                fileInput.addEventListener("change", function () {
+                    if (fileInput.files.length > 0) {
+                        fileNameLabel.textContent = "Archivo seleccionado: " + fileInput.files[0].name;
+                    } else {
+                        fileNameLabel.textContent = "";
+                    }
+                });
+            }
+        }
+
+        // Ejecutar cuando la página se cargue por primera vez
+        document.addEventListener("DOMContentLoaded", configurarFileUpload);
+
+        // Ejecutar cada vez que se actualice un UpdatePanel
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(configurarFileUpload);
+    </script>
 </asp:Content>

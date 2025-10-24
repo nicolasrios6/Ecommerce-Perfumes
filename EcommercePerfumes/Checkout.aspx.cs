@@ -32,7 +32,8 @@ namespace EcommercePerfumes
 				}
 
 			}
-			Panel1.Visible = (rblPago.SelectedValue == "Transferencia");
+			//Panel1.Visible = (rblPago.SelectedValue == "Transferencia");
+			Panel1.Visible = true;
 		}
 
 		private void ActualizarResumen()
@@ -210,10 +211,10 @@ namespace EcommercePerfumes
 			}
 		}
 
-		protected void rblPago_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			Panel1.Visible = (rblPago.SelectedValue == "Transferencia");
-		}
+		//protected void rblPago_SelectedIndexChanged(object sender, EventArgs e)
+		//{
+		//	Panel1.Visible = (rblPago.SelectedValue == "Transferencia");
+		//}
 
 		private string GenerarHtmlDetalle(List<ItemCarrito> carrito, decimal subtotal, decimal envio, decimal total)
 		{

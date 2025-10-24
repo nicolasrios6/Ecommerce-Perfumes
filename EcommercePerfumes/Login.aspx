@@ -12,7 +12,10 @@
             </div>
             <div class="mb-3">
                 <label for="txtContrasenia" class="form-label">Contraseña</label>
-                <asp:TextBox ID="txtContrasenia" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                <div class="d-flex">
+                    <asp:TextBox ID="txtContrasenia" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
+                    <button type="button" class="btn" onclick="togglePassword()"><i id="iconoPassword" class="fas fa-eye"></i></button>
+                </div>
             </div>
 
             <div class="mb-3">
@@ -24,4 +27,20 @@
             </div>
         </div>
     </div>
+
+    <script>
+        function togglePassword() {
+            var input = document.getElementById("<%= txtContrasenia.ClientID %>");
+            var icono = document.getElementById("iconoPassword");
+            if (input.type === "password") {
+                input.type = "text";
+                icono.classList.remove("fa-eye");
+                icono.classList.add("fa-eye-slash");
+            } else {
+                input.type = "password";
+                icono.classList.remove("fa-eye-slash");
+                icono.classList.add("fa-eye");
+            }
+        }
+    </script>
 </asp:Content>
