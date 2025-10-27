@@ -54,8 +54,7 @@
                     <div class="card mb-4">
                         <div class="card-header bg-dark text-white">Método de pago</div>
                         <div class="card-body">
-                            <%--OnSelectedIndexChanged="rblPago_SelectedIndexChanged"--%>
-                            <asp:RadioButtonList ID="rblPago" runat="server" CssClass="form-check" RepeatDirection="Vertical"  >
+                            <asp:RadioButtonList ID="rblPago" runat="server" CssClass="form-check" AutoPostBack="true" RepeatDirection="Vertical" OnSelectedIndexChanged="rblPago_SelectedIndexChanged">
                                 <asp:ListItem Text="Transferencia bancaria" Value="Transferencia" />
                                 <asp:ListItem Text="Efectivo" Value="Efectivo" />
                             </asp:RadioButtonList>
@@ -70,6 +69,10 @@
                                 <div class="mb-3">
                                     <label>Adjuntar comprobante:</label>
                                     <asp:FileUpload ID="fuComprobante" runat="server" CssClass="form-control w-100" />
+                                    <asp:RequiredFieldValidator ID="rfvComprobante" runat="server"
+                                        ControlToValidate="fuComprobante"
+                                        ErrorMessage="Debes adjuntar el comprobante de pago."
+                                        CssClass="text-danger" Display="Dynamic" Enabled="false" />
                                     <small id="nombreArchivo" class="text-success d-block mt-1"></small>
                                 </div>
                             </asp:Panel>
@@ -127,8 +130,8 @@
 
     <script type="text/javascript">
 
-            document.addEventListener("change", function (e) {
-                if (e.target.id === "<%= rblPago.ClientID %>_0" || e.target.id === "<%= rblPago.ClientID %>_1") {
+        document.addEventListener("change", function (e) {
+            if (e.target.id === "<%= rblPago.ClientID %>_0" || e.target.id === "<%= rblPago.ClientID %>_1") {
                     const panel = document.getElementById("<%= Panel1.ClientID %>");
                     panel.style.display = e.target.value === "Transferencia" ? "block" : "none";
                 }
@@ -149,10 +152,8 @@
             }
         }
 
-        // Ejecutar cuando la página se cargue por primera vez
         document.addEventListener("DOMContentLoaded", configurarFileUpload);
 
-        // Ejecutar cada vez que se actualice un UpdatePanel
         Sys.WebForms.PageRequestManager.getInstance().add_endRequest(configurarFileUpload);
     </script>
 </asp:Content>
